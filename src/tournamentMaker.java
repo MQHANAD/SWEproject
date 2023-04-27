@@ -10,38 +10,54 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class hellofx extends Application {
+public class tournamentMaker extends Application {
 
     @Override
     public void start(Stage stage) {
+        // background image
         Image image = new Image("file:Screenshot 2023-04-08 at 11.56.03 PM.png");
         ImageView imageView = new ImageView(image);
-        imageView.setFitHeight(600);
-        imageView.setFitWidth(1000);
-        
-
+        // autosizing the image with the stage
+        imageView.fitHeightProperty().bind(stage.heightProperty());
+        imageView.fitWidthProperty().bind(stage.widthProperty());
+        // ------------------------------------------------------------------------------------
+        // menu's buttons
         Button admin = new Button("admin");
         Button student = new Button("student");
         Button guest = new Button("guest");
-
+        // sizing the buttons
         admin.setMaxSize(600 ,60);
         admin.setMinSize(400,25);
         student.setMaxSize(600 ,60);
         student.setMinSize(400,25);
         guest.setMaxSize(600 ,60);
         guest.setMinSize(400,25);
-
-        VBox menu = new VBox(20,admin,student,guest);
-        menu.setLayoutX(300);
-        menu.setLayoutY(200);
-        Group root = new Group(imageView,menu);
-        menu.setPadding(new Insets(10,10,10,10));
-        menu.setAlignment(Pos.CENTER);
-
         
+        // -------------------------------------------------------------------------------------
+        // putting the buttons above eache other in a Vbox called menu
+        VBox menu = new VBox(20,admin,student,guest);
+        menu.setAlignment(Pos.CENTER);
+        // autosizing
+        menu.prefHeightProperty().bind(stage.heightProperty());
+        menu.prefWidthProperty().bind(stage.widthProperty());
+        
+        // creating the scene
+        Group root = new Group(imageView,menu);
         Scene scene = new Scene(root, 1000, 600);
         stage.setScene(scene);
         stage.show();
+        root.requestFocus();
+
+
+
+        // loging in scene
+        admin.setOnAction(e->{
+            loginPage.login(stage,scene);
+        });
+        student.setOnAction(e->{
+            loginPage.login(stage,scene);
+        });
+
     }
 
     public static void main(String[] args) {
