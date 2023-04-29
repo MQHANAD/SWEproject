@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1){
+    public static void login(Stage stage,Scene scane1,int i){
         Image image = new Image("file:Screenshot 2023-04-08 at 11.56.03 PM.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -54,8 +54,13 @@ public class loginPage {
         
         // extacting informaion and checking if the the email is available
         login.setOnAction(e->{
-            System.out.println(email.getText());
-            System.out.println(password.getText());
+            // email.getText();
+            // password.getText();
+             if(i==1)//if admin
+                 adminsPage.adminLogedin(stage, scane1);
+             else if(i==2)//if student
+                studentPage.studentLogedin(stage, scane1);
+            
         });
         backButton.setOnAction(e->{
             double width =stage.getWidth();

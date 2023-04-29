@@ -1,6 +1,5 @@
 
 import javafx.application.Application;
-import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -52,10 +51,13 @@ public class tournamentMaker extends Application {
 
         // loging in scene
         admin.setOnAction(e->{
-            loginPage.login(stage,scene);
+            loginPage.login(stage,scene,1);
         });
         student.setOnAction(e->{
-            loginPage.login(stage,scene);
+            loginPage.login(stage,scene,2);
+        });
+        guest.setOnAction(e->{
+            guestPage.guestLogedin(stage, scene);
         });
 
     }
