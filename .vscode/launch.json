@@ -9,6 +9,13 @@
             "name": "tournamentMaker",
             "request": "launch",
             "mainClass": "tournamentMaker",
+            "projectName": "SWEproject_18880230"
+        },
+        {
+            "type": "java",
+            "name": "tournamentMaker",
+            "request": "launch",
+            "mainClass": "tournamentMaker",
             "projectName": "swe_99e1f039"
         },
         {

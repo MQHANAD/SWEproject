@@ -1,4 +1,3 @@
-
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -10,11 +9,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class tournamentMaker extends Application {
-
     @Override
     public void start(Stage stage) {
         // background image
-        Image image = new Image("file:Screenshot 2023-04-08 at 11.56.03 PM.png");
+        Image image = new Image("https://genesis.ro/wp-content/uploads/2021/06/sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
