@@ -30,7 +30,7 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "vmArgs": "--module-path /Users/mohanad/Documents/KFUPM/222/SWE206/project/swe/lib --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }
