@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 public class loginPage {
     public static void login(Stage stage,Scene scane1,int i){
-        Image image = new Image("https://genesis.ro/wp-content/uploads/2021/06/sports_banners-1200x653.png");
+        Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
