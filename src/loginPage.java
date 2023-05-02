@@ -22,6 +22,7 @@ public class loginPage {
         TextField email = new TextField();
         PasswordField password = new PasswordField();
         Button backButton = new Button("Back");
+        Button register = new Button("sign up");
 
 
         email.setPromptText("Email");
@@ -36,12 +37,14 @@ public class loginPage {
         login.setMinSize(100,12.5);
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
+        register.setMaxSize(210 ,30);
+        register.setMinSize(200,25);
 
         HBox hBox = new HBox(10,backButton, login);
         hBox.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(20,email,password,hBox);
+        VBox box = new VBox(10,email,password,hBox,register);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -69,6 +72,9 @@ public class loginPage {
             stage.setHeight(heigt);
             stage.setWidth(width);
             
+        });
+        register.setOnAction(e->{
+            // registraionButtonClicked
         });
     }    
 }

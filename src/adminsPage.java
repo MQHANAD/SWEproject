@@ -56,7 +56,7 @@ public class adminsPage {
             // call the method
         });
         creatTournament.setOnAction(e->{
-            // call the method
+            // creatTournamentClicked()
         });
         creatTeams.setOnAction(e->{
             // call the method
