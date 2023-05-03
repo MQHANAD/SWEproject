@@ -1,4 +1,4 @@
-public abstract class toutnament {
+public abstract class tournament {
     private String name;
     private String type;
     private String sport;
