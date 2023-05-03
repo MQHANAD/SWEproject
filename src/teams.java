@@ -1,3 +1,70 @@
 public class teams {
+    private String name;
+    private int goals;
+    private int goalsAgainst;
+    private int wins;
+    private int losses;
+    private int ties;
+    private int points;
     
+    public teams(String name) {
+        this.name = name;
+        this.goals = 0;
+        this.goalsAgainst=0;
+        this.wins = 0;
+        this.losses = 0;
+        this.ties = 0;
+        this.points = 0;
+    }
+    
+     public String getName() {
+        return name;
+    }
+
+    public int getGoals() {
+        return goals;
+    }
+
+    public int getWins() {
+        return wins;
+    }
+
+    public int getGoalsAgainst() {
+        return goalsAgainst;
+    }
+
+    public int getLosses() {
+        return losses;
+    }
+
+    public int getTies() {
+        return ties;
+    }
+
+    public int getPoints() {
+        return points;
+    }
+
+    public void addGoals(int goals) {
+        this.goals += goals;
+    }
+
+    public void addGoalsAgainst(int goalsAgainst) {
+        this.goalsAgainst += goalsAgainst;
+    }
+
+
+    public void addWin() {
+        this.wins++;
+        this.points += 3;
+    }
+
+    public void addLoss() {
+        this.losses++;
+    }
+
+    public void addTie() {
+        this.ties++;
+        this.points += 1;
+    }
 }
