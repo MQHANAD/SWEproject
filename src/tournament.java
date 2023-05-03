@@ -6,6 +6,14 @@ public abstract class tournament {
     private int numOfParticibents;
     private teams winner;
     private int totalGoals;
+    
+    private tournament(String name, String type, String sport, int id, int numOfParticibents){
+        this.name=name;
+        this.type=type;
+        this.sport=sport;
+        this.id=id;
+        this.numOfParticibents=numOfParticibents;
+    }
 
     public String getName() {
         return name;
