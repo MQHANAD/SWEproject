@@ -1,4 +1,5 @@
-public abstract class tournament {
+import java.util.UUID;
+public class tournament {
     private String name;
     private String type;
     private String sport;
@@ -7,11 +8,11 @@ public abstract class tournament {
     private teams winner;
     private int totalGoals;
     
-    private tournament(String name, String type, String sport, int id, int numOfParticibents){
+    public tournament(String name, String type, String sport,  int numOfParticibents){
         this.name=name;
         this.type=type;
         this.sport=sport;
-        this.id=id;
+        this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
     }
 
