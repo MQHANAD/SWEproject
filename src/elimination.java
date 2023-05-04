@@ -1,4 +1,11 @@
-public class elimination extends toutnament {
+public class elimination extends tournament {
+
+    public elimination(String name, String type, String sport, int numOfParticibents) {
+        super(name, type, sport, numOfParticibents);
+        
+    
+    }
+
     private teams[] eliminated;
     
     public teams[] getEliminated() {
