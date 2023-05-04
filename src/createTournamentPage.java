@@ -1,0 +1,107 @@
+import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+public class createTournamentPage {
+    public static void tournamentPageCalled(Stage stage,Scene scane1){
+        Image image = new Image("file:sports_banners-1200x653.png");
+        ImageView imageView = new ImageView(image);
+        // autosizing the image with the stage
+        imageView.fitHeightProperty().bind(stage.heightProperty());
+        imageView.fitWidthProperty().bind(stage.widthProperty());
+
+        
+        TextField name = new TextField();
+    
+        Button backButton = new Button("Back");
+        Button createButton = new Button( "Create");
+        Label type = new Label("Type");
+        Label sport = new Label("Sport");
+        Label numOfParLabel = new Label("Players");
+        Label nameLabel = new Label("Name");
+        ChoiceBox <String> types = new ChoiceBox<>();
+        ChoiceBox <String> sports = new ChoiceBox<>();
+        ChoiceBox <Integer> numOfPAr = new ChoiceBox<>();
+        types.getItems().addAll("Elimination","Round Robin");
+        sports.getItems().addAll("FootBall","BasketBall","tennis");
+        numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
+        type.setFont(new Font(20));
+        numOfParLabel.setFont(new Font(20));
+        sport.setFont(new Font(20));
+        nameLabel.setFont(new Font(20));
+
+        
+
+    
+        name.setPromptText("Tournament's Name");
+        name.setMinWidth(300);
+        types.setMinWidth(300);
+        sports.setMinWidth(300);
+        numOfPAr.setMinWidth(300);
+        backButton.setMaxSize(150 ,30);
+        backButton.setMinSize(100,12.5);
+        createButton.setMaxSize(150 ,30);
+        createButton.setMinSize(100,12.5);
+        
+
+        HBox sportBox = new HBox(15,sport,sports );
+        HBox typeBox = new HBox(15,type,types );
+        HBox nameBox = new HBox(14,nameLabel,name );
+        HBox numOfplayersBox = new HBox(1,numOfParLabel,numOfPAr );
+        HBox butttonsBox = new HBox(20,backButton,createButton);
+        
+        sportBox.setAlignment(Pos.CENTER);
+        typeBox.setAlignment(Pos.CENTER);
+        numOfplayersBox.setAlignment(Pos.CENTER);
+        nameBox.setAlignment(Pos.CENTER);
+        butttonsBox.setAlignment(Pos.CENTER);
+
+
+        VBox box = new VBox(10,nameBox,sportBox,numOfplayersBox,typeBox,butttonsBox);
+        box.setAlignment(Pos.CENTER);
+        box.prefHeightProperty().bind(stage.heightProperty());
+        box.prefWidthProperty().bind(stage.widthProperty());
+        
+
+        Group root = new Group(imageView,box);
+        Scene scene = new Scene(root);
+        stage.setScene(scene); 
+        root.requestFocus();
+
+        backButton.setOnAction(e->{
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane1);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            
+        });
+
+        createButton.setOnAction(e->{
+            System.out.println(types.getValue());
+            System.out.println(sports.getValue());
+            System.out.println(numOfPAr.getValue());
+
+            if(types.getValue().equals("Elimination")){
+                // create elimination tournament
+            }
+            else if(types.getValue().equals("Round Robin")){
+                //create Round Robin tournament
+            }
+            
+
+        });
+           
+    }    
+    
+}

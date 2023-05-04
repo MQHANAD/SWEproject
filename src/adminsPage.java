@@ -15,7 +15,7 @@ public class adminsPage {
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
-        Button creatTournament = new Button("Creat a tournament");
+        Button creatTournament = new Button("Create a tournament");
         Button creatTeams = new Button("Creat a team");
         Button archivedTournaments = new Button("Archived tournaments");
         Button viewTournament = new Button("View tournaments");
@@ -56,7 +56,7 @@ public class adminsPage {
             // call the method
         });
         creatTournament.setOnAction(e->{
-            // creatTournamentClicked()
+            createTournamentPage.tournamentPageCalled(stage, scene);
         });
         creatTeams.setOnAction(e->{
             // call the method
