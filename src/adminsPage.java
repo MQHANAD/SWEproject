@@ -45,7 +45,7 @@ public class adminsPage {
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
         
-
+        
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
         stage.setScene(scene); 
@@ -54,12 +54,15 @@ public class adminsPage {
         
         viewTournament.setOnAction(e->{
             // call the method
+            // here where the admin can add students/teams to tournaments
+            // remove students/teams from the tournaments
+            // view mathes 
         });
         creatTournament.setOnAction(e->{
             createTournamentPage.tournamentPageCalled(stage, scene);
         });
         creatTeams.setOnAction(e->{
-            // call the method
+            creatTeamPage.creatTeamPageCalled(stage, scene);
         });
         archivedTournaments.setOnAction(e->{
             // call the method
@@ -67,7 +70,7 @@ public class adminsPage {
         logout.setOnAction(e->{
             // show a confirmation window
             double width =stage.getWidth();
-            Double heigt = stage.getHeight();
+            double heigt = stage.getHeight();
             stage.setScene(scane1);
             stage.setHeight(heigt);
             stage.setWidth(width);

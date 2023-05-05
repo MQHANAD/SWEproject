@@ -47,10 +47,14 @@ public class teams {
 
     public void addGoals(int goals) {
         this.goals += goals;
+        // or this.goals = matchObj.getScore1 or .getScore2, we can use if statment;
     }
 
     public void addGoalsAgainst(int goalsAgainst) {
         this.goalsAgainst += goalsAgainst;
+    }
+    public void removeGoalesAgainst(int goalsAgainst) {
+        this.goalsAgainst -= goalsAgainst;
     }
 
 
@@ -58,13 +62,37 @@ public class teams {
         this.wins++;
         this.points += 3;
     }
+    public void removeWin() {
+        this.wins--;
+        this.points -= 3;
+    }
 
     public void addLoss() {
         this.losses++;
     }
+    public void removeLoss() {
+        this.losses--;
+    }
 
+    public void removeTie() {
+        this.ties--;
+        this.points -= 1;
+    }
     public void addTie() {
         this.ties++;
         this.points += 1;
     }
+    public void addGoal() {
+        goals++;
+    }
+    public void removeGoal() {
+        goals--;
+    }
+    public void addPoints() {
+        points++;
+    }
+    public void removePoints() {
+        points--;
+    }
+    
 }

@@ -15,8 +15,8 @@ public class studentPage {
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
-        Button registerToTournament = new Button("Register to a tournament");
-        Button registerToTeam = new Button("register to a team");
+        
+        Button viewTeams = new Button("View teams");
         Button viewTournament = new Button("View tournaments");
         Button logout = new Button("Logout");
 
@@ -24,10 +24,9 @@ public class studentPage {
 
         
         
-        registerToTournament.setMaxSize(600 ,60);
-        registerToTournament.setMinSize(400,25);
-        registerToTeam.setMaxSize(600 ,60);
-        registerToTeam.setMinSize(400,25);
+        
+        viewTeams.setMaxSize(600 ,60);
+        viewTeams.setMinSize(400,25);
         viewTournament.setMaxSize(600 ,60);
         viewTournament.setMinSize(400,25);
         logout.setMaxSize(600 ,60);
@@ -37,7 +36,7 @@ public class studentPage {
         
 
 
-        VBox box = new VBox(20,viewTournament,registerToTournament,registerToTeam,logout);
+        VBox box = new VBox(20,viewTournament,viewTeams,logout);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -51,12 +50,13 @@ public class studentPage {
         
         viewTournament.setOnAction(e->{
             // call the method
+            // here where the student can register to a tournament
+            // view matches
         });
-        registerToTournament.setOnAction(e->{
+        
+        viewTeams.setOnAction(e->{
             // call the method
-        });
-        registerToTeam.setOnAction(e->{
-            // call the method
+            // here where the student can register to a team
         });
         
         logout.setOnAction(e->{

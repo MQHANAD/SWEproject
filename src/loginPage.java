@@ -74,7 +74,7 @@ public class loginPage {
             
         });
         register.setOnAction(e->{
-            // registraionButtonClicked
+            registrationPage.registraionButtonClicked(i, stage ,scene);
         });
     }    
 }
