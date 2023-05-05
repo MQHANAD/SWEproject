@@ -62,7 +62,7 @@ public class tournamentMaker extends Application {
         });
 
     }
-
+    
     public static void main(String[] args) {
         launch();
     }

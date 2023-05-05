@@ -1,3 +1,4 @@
+import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -8,6 +9,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class adminsPage {
+    static boolean confirmed =false;
     public static void adminLogedin(Stage stage,Scene scane1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
@@ -71,13 +73,22 @@ public class adminsPage {
         });
         logout.setOnAction(e->{
             // show a confirmation window
+            //confirmed = alertBox.display();
+            
             double width =stage.getWidth();
             double heigt = stage.getHeight();
             stage.setScene(scane1);
             stage.setHeight(heigt);
             stage.setWidth(width);
-            
+              
         });
+        
+        
+        
+        
+        
+        
+        
     }    
 }
 
