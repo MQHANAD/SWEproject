@@ -46,7 +46,7 @@ public class Match {
 
         teams team1 = match.getTeam1();
         teams team2 = match.getTeam2();
-
+        
         team1.addGoals(score1);
         team2.addGoals(score2);
         team1.addGoalsAgainst(score2);
