@@ -18,17 +18,19 @@ public class tournamentMaker extends Application {
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
         // ------------------------------------------------------------------------------------
+        
         // menu's buttons
         Button admin = new Button("admin");
         Button student = new Button("student");
         Button guest = new Button("guest");
+
         // sizing the buttons
-        admin.setMaxSize(600 ,60);
-        admin.setMinSize(400,25);
-        student.setMaxSize(600 ,60);
-        student.setMinSize(400,25);
-        guest.setMaxSize(600 ,60);
-        guest.setMinSize(400,25);
+        admin.setMaxSize(300 ,60);
+        admin.setMinSize(200,25);
+        student.setMaxSize(300 ,60);
+        student.setMinSize(200,25);
+        guest.setMaxSize(300 ,60);
+        guest.setMinSize(200,25);
         
         // -------------------------------------------------------------------------------------
         // putting the buttons above eache other in a Vbox called menu
@@ -41,6 +43,7 @@ public class tournamentMaker extends Application {
         // creating the scene
         Group root = new Group(imageView,menu);
         Scene scene = new Scene(root, 1000, 600);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         stage.show();
         root.requestFocus();

@@ -1,0 +1,24 @@
+.root{
+    -fx-font-size: 15;    
+}
+.button{
+    -fx-background-color: rgba(55, 64, 75, 0.863);
+    -fx-text-fill: rgb(243, 243, 243);
+    -fx-background-radius: 15;
+}
+.label{
+    -fx-text-fill: black;
+    
+}
+.normal-color{
+    -fx-text-fill: black;
+    -fx-background-color: rgba(53, 53, 53, 0.616) ;
+    -fx-background-radius: 15;
+    -fx-font-weight: bold;
+}
+.shade{
+    -fx-background-color: rgba(94, 94, 94, 0.267) ;
+}
+#bold{
+    -fx-font-weight: bold;
+}

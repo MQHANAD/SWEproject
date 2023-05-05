@@ -19,6 +19,7 @@ public class creatTeamPage {
 
         
         TextField name = new TextField();
+        name.getStyleClass().add("normal-color");
     
         Button backButton = new Button("Back");
         Button createButton = new Button( "Create");
@@ -48,10 +49,11 @@ public class creatTeamPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
 
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
 

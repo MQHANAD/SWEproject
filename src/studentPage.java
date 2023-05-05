@@ -25,12 +25,12 @@ public class studentPage {
         
         
         
-        viewTeams.setMaxSize(600 ,60);
-        viewTeams.setMinSize(400,25);
-        viewTournament.setMaxSize(600 ,60);
-        viewTournament.setMinSize(400,25);
-        logout.setMaxSize(600 ,60);
-        logout.setMinSize(400,25);
+        viewTeams.setMaxSize(300 ,60);
+        viewTeams.setMinSize(200,25);
+        viewTournament.setMaxSize(300 ,60);
+        viewTournament.setMinSize(200,25);
+        logout.setMaxSize(300 ,60);
+        logout.setMinSize(200,25);
         
 
         
@@ -40,10 +40,11 @@ public class studentPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
 
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
         

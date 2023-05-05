@@ -21,20 +21,21 @@ public class adminsPage {
         Button viewTournament = new Button("View tournaments");
         Button logout = new Button("Logout");
 
+
         
 
         
         
-        creatTeams.setMaxSize(600 ,60);
-        creatTeams.setMinSize(400,25);
-        creatTournament.setMaxSize(600 ,60);
-        creatTournament.setMinSize(400,25);
-        archivedTournaments.setMaxSize(600 ,60);
-        archivedTournaments.setMinSize(400,25);
-        viewTournament.setMaxSize(600 ,60);
-        viewTournament.setMinSize(400,25);
-        logout.setMaxSize(600 ,60);
-        logout.setMinSize(400,25);
+        creatTeams.setMaxSize(300 ,60);
+        creatTeams.setMinSize(200,25);
+        creatTournament.setMaxSize(300 ,60);
+        creatTournament.setMinSize(200,25);
+        archivedTournaments.setMaxSize(300 ,60);
+        archivedTournaments.setMinSize(200,25);
+        viewTournament.setMaxSize(300 ,60);
+        viewTournament.setMinSize(200,25);
+        logout.setMaxSize(300 ,60);
+        logout.setMinSize(200,25);
         
 
         
@@ -44,10 +45,11 @@ public class adminsPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
         
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
         

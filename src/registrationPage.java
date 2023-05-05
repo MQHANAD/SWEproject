@@ -44,9 +44,10 @@ public class registrationPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
 

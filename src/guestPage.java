@@ -24,10 +24,10 @@ public class guestPage {
         
         
         
-        viewTournament.setMaxSize(600 ,60);
-        viewTournament.setMinSize(400,25);
-        backButton.setMaxSize(600 ,60);
-        backButton.setMinSize(400,25);
+        viewTournament.setMaxSize(300 ,60);
+        viewTournament.setMinSize(200,25);
+        backButton.setMaxSize(300 ,60);
+        backButton.setMinSize(200,25);
         
 
         
@@ -37,10 +37,11 @@ public class guestPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
 
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
         

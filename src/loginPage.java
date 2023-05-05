@@ -18,9 +18,11 @@ public class loginPage {
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
-        Button login = new Button("login");
+        Button login = new Button("log in");
         TextField email = new TextField();
+        email.getStyleClass().add("normal-color");
         PasswordField password = new PasswordField();
+        password.getStyleClass().add("normal-color");
         Button backButton = new Button("Back");
         Button register = new Button("sign up");
 
@@ -48,10 +50,11 @@ public class loginPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        
+        box.getStyleClass().add("shade");
 
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
         

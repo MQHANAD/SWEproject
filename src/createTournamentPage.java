@@ -9,6 +9,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -22,16 +23,24 @@ public class createTournamentPage {
 
         
         TextField name = new TextField();
+        name.getStyleClass().add("normal-color");
     
         Button backButton = new Button("Back");
         Button createButton = new Button( "Create");
         Label type = new Label("Type");
+        type.setId("bold");
         Label sport = new Label("Sport");
+        sport.setId("bold");
         Label numOfParLabel = new Label("Players");
+        numOfParLabel.setId("bold");
         Label nameLabel = new Label("Name");
+        nameLabel.setId("bold");
         ChoiceBox <String> types = new ChoiceBox<>();
         ChoiceBox <String> sports = new ChoiceBox<>();
         ChoiceBox <Integer> numOfPAr = new ChoiceBox<>();
+        types.getStyleClass().add("normal-color");
+        sports.getStyleClass().add("normal-color");
+        numOfPAr.getStyleClass().add("normal-color");
         types.getItems().addAll("Elimination","Round Robin");
         sports.getItems().addAll("FootBall","BasketBall","tennis");
         numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
@@ -54,8 +63,8 @@ public class createTournamentPage {
         createButton.setMinSize(100,12.5);
         
 
-        HBox sportBox = new HBox(15,sport,sports );
-        HBox typeBox = new HBox(15,type,types );
+        HBox sportBox = new HBox(18,sport,sports );
+        HBox typeBox = new HBox(18,type,types );
         HBox nameBox = new HBox(14,nameLabel,name );
         HBox numOfplayersBox = new HBox(1,numOfParLabel,numOfPAr );
         HBox butttonsBox = new HBox(20,backButton,createButton);
@@ -71,10 +80,12 @@ public class createTournamentPage {
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
+        box.getStyleClass().add("shade");
         
 
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
         stage.setScene(scene); 
         root.requestFocus();
 
