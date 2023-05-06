@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -11,6 +15,10 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class registrationPage {
+    //list of registerd students and admins
+    private static ArrayList<Admin> admins= new ArrayList<>(); 
+    private static ArrayList<student> students = new ArrayList<>(); 
+
     public static void registraionButtonClicked(int i,Stage stage,Scene scane1){//if i == 1 then admin registering, if i == 2 then it's student
         TextField name = new TextField();
         PasswordField password = new PasswordField();
@@ -20,10 +28,13 @@ public class registrationPage {
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
 
+        //styling ---------------------------------------------
+
         email.getStyleClass().add("normal-color");
         password.getStyleClass().add("normal-color");
         name.getStyleClass().add("normal-color");
 
+        
         signUp.setOnMouseEntered(e ->{
             signUp.setId("buttonOnTouch");    
         });
@@ -36,16 +47,17 @@ public class registrationPage {
         backButton.setOnMouseExited(e->{
             backButton.setId("buttonOut");    
         });
-
+        //--------------------------------------------------------
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
+        //adding texts on the fields 
         name.setPromptText("Name");
         password.setPromptText("Password");
         email.setPromptText("Email");
     
-
+        //sizing
         name.setMinSize(200, 25);
         password.setMinSize(200, 25);
         email.setMinSize(200, 25);
@@ -55,23 +67,32 @@ public class registrationPage {
         backButton.setMinWidth(100);
         signUp.setMinWidth(100);
 
-        HBox hBox = new HBox(20,backButton, signUp);
-        hBox.setAlignment(Pos.CENTER);
+        HBox hBox = new HBox(20,backButton, signUp); // adding back button and sign up button in a horizental box so they can be next to each other
+        hBox.setAlignment(Pos.CENTER); //setting the horizental box at the center
 
-        VBox box = new VBox(10,name,password,email,hBox);
-        box.setAlignment(Pos.CENTER);
+        VBox box = new VBox(10,name,password,email,hBox);//adding component to a vertcal box
+        box.setAlignment(Pos.CENTER);//setting the box at the center
+
+        //to auto size the box with the window
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
-        box.getStyleClass().add("shade");
+
+        box.getStyleClass().add("shade");//styling
+
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
-        scene.getStylesheets().add("style.css");
+
+        scene.getStylesheets().add("style.css");//styling
         stage.setScene(scene); 
-        root.requestFocus();
+
+
+        root.requestFocus();// to remove the blue border from buttons
 
         backButton.setOnAction(e->{
-            double width =stage.getWidth();
+            //to keep the same size of the window
+            double width =stage.getWidth(); 
             Double heigt = stage.getHeight();
+
             stage.setScene(scane1);
             stage.setHeight(heigt);
             stage.setWidth(width);
@@ -79,16 +100,46 @@ public class registrationPage {
         });
 
         signUp.setOnAction(e->{
-            System.out.println(name.getText());
-            System.out.println(password.getText());
-            System.out.println(email.getText());
-            if (i==1){
-                //admin
+            
+            if (i==1){//1 for admin
+                //adding the admin arraylist to a file.dat
+               admins.add(new Admin(name.getText(),email.getText(),password.getText()));
+               try{
+                File adminsFile = new File("admins.dat");
+                if(!adminsFile.exists()){
+                    adminsFile.createNewFile();
+                }
+                FileOutputStream fos = new FileOutputStream(adminsFile);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(admins);
+                oos.close();
+                fos.close();
+                
+            }catch(Exception event){
+                System.out.println(event);
             }
-            else if (i==2){
-                //student
+                  
             }
-        });
+            else if (i==2){//2 for student
+                //adding the student arraylist to a file.dat
+                students.add(new student(name.getText(),email.getText(),password.getText()));
+                
+               try{
+                File studentsFile = new File("students.dat");
+                if(!studentsFile.exists()){
+                    studentsFile.createNewFile();
+                }
+                FileOutputStream fos = new FileOutputStream(studentsFile);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                oos.writeObject(students);
+                oos.close();
+                fos.close();
+                
+            }catch(Exception event){
+                System.out.println(event);
+            }
+            }
+        });       
 
         
 

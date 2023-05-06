@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 public class tournament {
     private String name;
@@ -7,6 +9,7 @@ public class tournament {
     private int numOfParticibents;
     private teams winner;
     private int totalGoals;
+    private List<teams> participant;
     
     public tournament(String name, String type, String sport,  int numOfParticibents){
         this.name=name;
@@ -14,10 +17,14 @@ public class tournament {
         this.sport=sport;
         this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
+        participant = new ArrayList<>();
     }
 
     public String getName() {
         return name;
+    }
+    public List<teams> getParticipant() {
+        return participant;
     }
     public int getId() {
         return id;
@@ -38,7 +45,9 @@ public class tournament {
         return totalGoals;
     }
 
-
+    public void setParticipant(List<teams> participant) {
+        this.participant = participant;
+    }
     public void setName(String name) {
         this.name = name;
     }
@@ -60,4 +69,10 @@ public class tournament {
     public void setTotalGoals(int totalGoals) {
         this.totalGoals = totalGoals;
     }
+    public void addParticipant(teams participant) {
+        this.participant.add(participant);
+    }
+    public void removeParticipant(teams participant) {
+        this.participant.remove(participant);
+    }    
 }

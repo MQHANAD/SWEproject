@@ -1,10 +1,12 @@
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
-public class Admin {
+public class Admin implements Serializable {
 
     private String name;
     private String email;
@@ -13,19 +15,19 @@ public class Admin {
     private List<tournament> tournaments;
     private List<teams> teams;
 
-    private Admin(String name, String email, int id, String password){
+    public Admin(String name, String email, String password){
 
         this.name=name;
         this.email=email;
-        this.id=id;
+        this.id= UUID.randomUUID().hashCode();
         this.password=password;
         this.tournaments = new ArrayList<>();
         teams = new ArrayList<>();
 
 
-    }
+    }   
 
-    private String getName(){
+    public String getName(){
         return name;
     }
 

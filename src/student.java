@@ -1,8 +1,19 @@
-public class student {
+import java.io.Serializable;
+import java.util.UUID;
+
+public class student implements Serializable {
     private String name;
     private String email;
     private int id;
     private String password;
+    public student(String name, String email, String password){
+
+        this.name=name;
+        this.email=email;
+        this.id=UUID.randomUUID().hashCode();
+        this.password=password;
+        
+    }
 
     public String getEmail() {
         return email;

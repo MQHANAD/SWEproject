@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+import java.util.List;
 public class teams {
     private String name;
     private int goals;
@@ -6,6 +8,7 @@ public class teams {
     private int losses;
     private int ties;
     private int points;
+    private List <tournament> registerdTournament;
     
     public teams(String name) {
         this.name = name;
@@ -15,6 +18,7 @@ public class teams {
         this.losses = 0;
         this.ties = 0;
         this.points = 0;
+        registerdTournament= new ArrayList<>();
     }
     
      public String getName() {
@@ -43,6 +47,18 @@ public class teams {
 
     public int getPoints() {
         return points;
+    }
+    public List<tournament> getRegisterdTournament() {
+        return registerdTournament;
+    }
+
+    public void RegisterTournament( tournament t) {
+        registerdTournament.add(t); 
+        t.addParticipant(this);
+    }
+    public void removeTournament( tournament t) {
+        registerdTournament.remove(t);
+        t.removeParticipant(this); 
     }
 
     public void addGoals(int goals) {

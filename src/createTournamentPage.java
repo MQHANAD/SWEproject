@@ -118,6 +118,7 @@ public class createTournamentPage {
             System.out.println(types.getValue());
             System.out.println(sports.getValue());
             System.out.println(numOfPAr.getValue());
+            
 
             if(types.getValue().equals("Elimination")){
                 // create elimination tournament
