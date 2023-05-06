@@ -25,7 +25,26 @@ public class creatTeamPage {
         Button createButton = new Button( "Create");
         Button selectTeamMembers = new Button("Add members");
 
-        
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+        createButton.setOnMouseEntered(e ->{
+            createButton.setId("buttonOnTouch");    
+        });
+        createButton.setOnMouseExited(e->{
+            createButton.setId("buttonOut");    
+        });
+
+        selectTeamMembers.setOnMouseEntered(e ->{
+            selectTeamMembers.setId("buttonOnTouch");    
+        });
+        selectTeamMembers.setOnMouseExited(e->{
+            selectTeamMembers.setId("buttonOut");    
+        });
 
     
         name.setPromptText("Tournament's Name");

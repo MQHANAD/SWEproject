@@ -5,6 +5,28 @@
     -fx-background-color: rgba(55, 64, 75, 0.863);
     -fx-text-fill: rgb(243, 243, 243);
     -fx-background-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 3px, 5px;
+}
+#buttonOnTouch{
+    -fx-background-color: rgb(55, 64, 75);
+    -fx-text-fill: rgb(243, 243, 243);
+    -fx-background-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 3px, 5px;
+}
+#buttonOut{
+    -fx-background-color: rgba(55, 64, 75, 0.863);
+    -fx-text-fill: rgb(243, 243, 243);
+    -fx-background-radius: 15;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    -fx-padding: 3px, 5px;
 }
 .label{
     -fx-text-fill: black;
@@ -12,13 +34,50 @@
 }
 .normal-color{
     -fx-text-fill: black;
+    
     -fx-background-color: rgba(53, 53, 53, 0.616) ;
     -fx-background-radius: 15;
     -fx-font-weight: bold;
+    -fx-border-color: black;
+    -fx-border-width: 2;
+    -fx-border-radius: 15;
+    
+    -fx-mark-color: black ;
+    
+
+
+
 }
 .shade{
     -fx-background-color: rgba(94, 94, 94, 0.267) ;
 }
+
+
+.normal-color .context-menu {
+    -fx-background-color: gray;
+    -fx-min-width: 290px;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    
+    
+    
+    
+ }
+.normal-color .menu-item:focused {
+    
+    -fx-background-color: rgba(0, 0, 0, 0.322) ;
+    -fx-background-radius: 15;
+    -fx-border-radius: 15;
+    -fx-border-color: black;
+    
+    
+    
+}
+
+#stage{
+    -fx-border-radius: 15;
+}
+
 #bold{
     -fx-font-weight: bold;
 }

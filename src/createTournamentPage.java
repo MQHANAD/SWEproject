@@ -9,7 +9,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -48,6 +47,23 @@ public class createTournamentPage {
         numOfParLabel.setFont(new Font(20));
         sport.setFont(new Font(20));
         nameLabel.setFont(new Font(20));
+
+        
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+        createButton.setOnMouseEntered(e ->{
+            createButton.setId("buttonOnTouch");    
+        });
+        createButton.setOnMouseExited(e->{
+            createButton.setId("buttonOut");    
+        });
+
+
 
         
 

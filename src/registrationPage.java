@@ -19,6 +19,24 @@ public class registrationPage {
         Button backButton = new Button("Back");
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
+
+        email.getStyleClass().add("normal-color");
+        password.getStyleClass().add("normal-color");
+        name.getStyleClass().add("normal-color");
+
+        signUp.setOnMouseEntered(e ->{
+            signUp.setId("buttonOnTouch");    
+        });
+        signUp.setOnMouseExited(e->{
+            signUp.setId("buttonOut");    
+        });
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
@@ -28,12 +46,12 @@ public class registrationPage {
         email.setPromptText("Email");
     
 
-        name.setMinSize(300, 25);
-        password.setMinSize(300, 25);
-        email.setMinSize(300, 25);
-        name.setMaxSize(300, 25);
-        password.setMaxSize(300, 25);
-        email.setMaxSize(300, 25);
+        name.setMinSize(200, 25);
+        password.setMinSize(200, 25);
+        email.setMinSize(200, 25);
+        name.setMaxSize(300, 60);
+        password.setMaxSize(300, 60);
+        email.setMaxSize(300, 60);
         backButton.setMinWidth(100);
         signUp.setMinWidth(100);
 

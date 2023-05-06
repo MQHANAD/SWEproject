@@ -21,7 +21,25 @@ public class studentPage {
         Button logout = new Button("Logout");
 
         
+        viewTeams.setOnMouseEntered(e ->{
+            viewTeams.setId("buttonOnTouch");    
+        });
+        viewTeams.setOnMouseExited(e->{
+            viewTeams.setId("buttonOut");    
+        });
 
+        viewTournament.setOnMouseEntered(e ->{
+            viewTournament.setId("buttonOnTouch");    
+        });
+        viewTournament.setOnMouseExited(e->{
+            viewTournament.setId("buttonOut");    
+        });
+        logout.setOnMouseEntered(e ->{
+            logout.setId("buttonOnTouch");    
+        });
+        logout.setOnMouseExited(e->{
+            logout.setId("buttonOut");    
+        });
         
         
         
@@ -62,12 +80,7 @@ public class studentPage {
         
         logout.setOnAction(e->{
             // show a confirmation window
-            double width =stage.getWidth();
-            Double heigt = stage.getHeight();
-            stage.setScene(scane1);
-            stage.setHeight(heigt);
-            stage.setWidth(width);
-            
+            alertBox.display(scane1,stage);
         });
     }    
 }

@@ -11,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1,int i){
+    public static void login(Stage stage,Scene scane1,int i,VBox box1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -25,6 +25,27 @@ public class loginPage {
         password.getStyleClass().add("normal-color");
         Button backButton = new Button("Back");
         Button register = new Button("sign up");
+
+        login.setOnMouseEntered(e ->{
+            login.setId("buttonOnTouch");    
+        });
+        login.setOnMouseExited(e->{
+            login.setId("buttonOut");    
+        });
+
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+        register.setOnMouseEntered(e ->{
+            register.setId("buttonOnTouch");    
+        });
+        register.setOnMouseExited(e->{
+            register.setId("buttonOut");    
+        });
 
 
         email.setPromptText("Email");
@@ -55,7 +76,7 @@ public class loginPage {
         Group root = new Group(imageView,box);
         Scene scene = new Scene(root);
         scene.getStylesheets().add("style.css");
-        stage.setScene(scene); 
+        stage.setScene(scene);
         root.requestFocus();
         
         // extacting informaion and checking if the the email is available

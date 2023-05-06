@@ -19,6 +19,19 @@ public class guestPage {
         Button viewTournament = new Button("View tournaments");
         Button backButton = new Button("Back");
 
+        viewTournament.setOnMouseEntered(e ->{
+            viewTournament.setId("buttonOnTouch");    
+        });
+        viewTournament.setOnMouseExited(e->{
+            viewTournament.setId("buttonOut");    
+        });
+
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
         
 
         

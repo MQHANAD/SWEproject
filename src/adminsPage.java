@@ -1,4 +1,3 @@
-import javafx.event.Event;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -23,7 +22,40 @@ public class adminsPage {
         Button viewTournament = new Button("View tournaments");
         Button logout = new Button("Logout");
 
+        creatTournament.setOnMouseEntered(e ->{
+            creatTournament.setId("buttonOnTouch");    
+        });
+        creatTournament.setOnMouseExited(e->{
+            creatTournament.setId("buttonOut");    
+        });
+        
+        creatTeams.setOnMouseEntered(e ->{
+            creatTeams.setId("buttonOnTouch");    
+        });
+        creatTeams.setOnMouseExited(e->{
+            creatTeams.setId("buttonOut");    
+        });
 
+        archivedTournaments.setOnMouseEntered(e ->{
+            archivedTournaments.setId("buttonOnTouch");    
+        });
+        archivedTournaments.setOnMouseExited(e->{
+            archivedTournaments.setId("buttonOut");    
+        });
+
+        viewTournament.setOnMouseEntered(e ->{
+            viewTournament.setId("buttonOnTouch");    
+        });
+        viewTournament.setOnMouseExited(e->{
+            viewTournament.setId("buttonOut");    
+        });
+
+        logout.setOnMouseEntered(e ->{
+            logout.setId("buttonOnTouch");    
+        });
+        logout.setOnMouseExited(e->{
+            logout.setId("buttonOut");    
+        });
         
 
         
@@ -73,14 +105,7 @@ public class adminsPage {
         });
         logout.setOnAction(e->{
             // show a confirmation window
-            //confirmed = alertBox.display();
-            
-            double width =stage.getWidth();
-            double heigt = stage.getHeight();
-            stage.setScene(scane1);
-            stage.setHeight(heigt);
-            stage.setWidth(width);
-              
+            alertBox.display(scane1,stage);
         });
         
         
