@@ -80,6 +80,25 @@ public class Admin implements Serializable {
         
     }
     
+    public void deleteTeam(teams team){
+
+        if (team != null){
+            teams.remove(team);
+            List<student> st=team.getStudents();
+            for(student student:st){
+                student.setTeam(null);
+            }
+            System.out.println(team.getName() + " has been deleted");
+
+
+        }
+
+        else {
+            System.out.println("Unable to delete team");
+        }
+
+    }
+    
     public void addStudentToTeam(teams team, student st){
         if (team != null && st.getTeam() == null){
             team.addStudent(st);
