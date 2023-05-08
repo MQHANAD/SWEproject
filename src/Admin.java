@@ -117,6 +117,28 @@ public class Admin implements Serializable {
         }
     
     }
+    
+    public void viewTournaments(){
+        if (tournaments.isEmpty()) {
+            System.out.println("No tournaments available");
+        }
+
+        else{
+            for (tournament tournament : tournaments){
+                System.out.println("Tournament Name: " + tournament.getName());
+                System.out.println("Sport: " + tournament.getSport());
+                System.out.println("Tournament Type: " + tournament.getType());
+
+                System.out.println("Teams/Players:");
+                for (teams team : tournament.getParticipant()){
+
+                    System.out.println("  - " + team.getName());
+
+                }
+                System.out.println("----------------------------------------");
+            }
+        }
+    }
 
     public void deleteTournament(tournament tournament) {
         tournaments.remove(tournament);
