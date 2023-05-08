@@ -9,6 +9,7 @@ public class teams {
     private int ties;
     private int points;
     private List <tournament> registerdTournament;
+    private List<student> students;
     
     public teams(String name) {
         this.name = name;
@@ -19,6 +20,7 @@ public class teams {
         this.ties = 0;
         this.points = 0;
         registerdTournament= new ArrayList<>();
+        this.students=new ArrayList<>();
     }
     
      public String getName() {
@@ -47,6 +49,10 @@ public class teams {
 
     public int getPoints() {
         return points;
+    }
+    
+    public List<student> getStudents(){
+        return students;
     }
     public List<tournament> getRegisterdTournament() {
         return registerdTournament;
