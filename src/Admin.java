@@ -73,7 +73,10 @@ public class Admin implements Serializable {
  
     }
 
-    public void createTeams(){
+    public void createTeams(String name){
+        
+        teams team= new teams(name);
+        teams.add(team);
         
     }
 
