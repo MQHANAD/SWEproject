@@ -90,6 +90,20 @@ public class Admin implements Serializable {
         
         else{System.out.println("Unable to add player to team");}
     }
+    
+     public void removeStudentFromTeam(student st){
+        if (st.getTeam() != null){
+            teams team= st.getTeam();
+            team.getStudents().remove(st);
+            st.setTeam(null);
+            System.out.println(st.getName() + " has been removed from " + team.getName()); 
+           
+        }
+
+        else {
+            System.out.println("Unable to remove player from team");
+        }
+    }
 
     public void saveTournament(String filename){
         
