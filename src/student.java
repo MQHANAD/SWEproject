@@ -6,12 +6,14 @@ public class student implements Serializable {
     private String email;
     private int id;
     private String password;
+    private teams team;
     public student(String name, String email, String password){
 
         this.name=name;
         this.email=email;
         this.id=UUID.randomUUID().hashCode();
         this.password=password;
+        this.team = null;
         
     }
 
@@ -27,6 +29,10 @@ public class student implements Serializable {
     public String getName() {
         return name;
     }
+    
+    public teams getTeam(){
+        return team;
+    }
 
     public void setEmail(String email) {
         this.email = email;
@@ -39,6 +45,10 @@ public class student implements Serializable {
     }
     public void setPassword(String password) {
         this.password = password;
+    }
+    
+    public void setTeam(teams team) {
+        this.team = team;
     }
 
     public void registerForTournament(){
