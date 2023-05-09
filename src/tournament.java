@@ -10,6 +10,13 @@ public class tournament {
     private teams winner;
     private int totalGoals;
     private List<teams> participant;
+
+    public tournament(){
+        this.name="";
+        this.type="";
+        this.sport="";
+        this.numOfParticibents=0;
+    }
     
     public tournament(String name, String type, String sport,  int numOfParticibents){
         this.name=name;

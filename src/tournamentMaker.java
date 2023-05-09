@@ -14,7 +14,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import java.util.*;
 public class tournamentMaker extends Application {   
-    TableView<tournament> table;
+    public static TableView<tournament> table;
    
     @Override
     public void start(Stage stage) {
@@ -47,6 +47,16 @@ public class tournamentMaker extends Application {
         TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("NumOfParticibents");
         nameCoulmn.setMinWidth(200);
         nameCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
+
+        table=new TableView<>();
+        table.setItems(getTournament());
+        table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn);
+
+        
+
+        
+        
+        
 
         //=========================================================================================
         // menu's buttons
@@ -118,6 +128,12 @@ public class tournamentMaker extends Application {
     
     public static void main(String[] args) {
         launch();
+    }
+
+    public ObservableList<tournament> getTournament(){
+        ObservableList<tournament> tournaments=FXCollections.observableArrayList();
+        tournaments.add(new tournament());
+        return tournaments;
     }
 
 }

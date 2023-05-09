@@ -5,6 +5,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -124,10 +125,15 @@ public class createTournamentPage {
             if(types.getValue().equals("Elimination")){
                 // create elimination tournament
                 tournament tr = new elimination(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
+                tournamentMaker.table.getItems().add(tr);
+                System.out.println(tournamentMaker.table.toString());
+                 
+                
             }
             else if(types.getValue().equals("Round Robin")){
                 //create Round Robin tournament
                 tournament tr = new roundRobin(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
+                tournamentMaker.table.getItems().add(tr);
             }
             
 
