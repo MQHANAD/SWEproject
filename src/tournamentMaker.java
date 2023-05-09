@@ -1,14 +1,21 @@
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import java.util.*;
 public class tournamentMaker extends Application {   
+    TableView<tournament> table;
+   
     @Override
     public void start(Stage stage) {
         // background image
@@ -18,7 +25,30 @@ public class tournamentMaker extends Application {
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
         // ------------------------------------------------------------------------------------
-        
+
+        // tournaments table
+
+        // name column
+        TableColumn<tournament,String> nameCoulmn = new TableColumn<>("Name");
+        nameCoulmn.setMinWidth(200);
+        nameCoulmn.setCellValueFactory(new PropertyValueFactory("name"));
+
+        // type column
+        TableColumn<tournament,String> typeCoulmn = new TableColumn<>("Type");
+        nameCoulmn.setMinWidth(200);
+        nameCoulmn.setCellValueFactory(new PropertyValueFactory("type"));
+
+        // sport column
+        TableColumn<tournament,String> sportCoulmn = new TableColumn<>("Sport");
+        nameCoulmn.setMinWidth(200);
+        nameCoulmn.setCellValueFactory(new PropertyValueFactory("sport"));
+
+        // numOfParticibents column
+        TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("NumOfParticibents");
+        nameCoulmn.setMinWidth(200);
+        nameCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
+
+        //=========================================================================================
         // menu's buttons
         Button admin = new Button("admin");
         Button student = new Button("student");
