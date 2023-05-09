@@ -47,7 +47,7 @@ public class creatTeamPage {
         });
 
     
-        name.setPromptText("Tournament's Name");
+        name.setPromptText("Team Name");
         name.setMaxWidth(300);
         selectTeamMembers.setMaxWidth(300);
         backButton.setMaxSize(150 ,30);

@@ -17,7 +17,7 @@ public class adminsPage {
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
         Button creatTournament = new Button("Create a tournament");
-        Button creatTeams = new Button("Creat a team");
+        Button creatTeams = new Button("Create a team");
         Button archivedTournaments = new Button("Archived tournaments");
         Button viewTournament = new Button("View tournaments");
         Button logout = new Button("Logout");
