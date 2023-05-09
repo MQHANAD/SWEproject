@@ -122,9 +122,11 @@ public class createTournamentPage {
 
             if(types.getValue().equals("Elimination")){
                 // create elimination tournament
+                tournament tr = new elimination(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
             }
             else if(types.getValue().equals("Round Robin")){
                 //create Round Robin tournament
+                tournament tr = new roundRobin(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
             }
             
 
