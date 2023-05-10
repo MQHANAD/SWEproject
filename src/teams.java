@@ -4,10 +4,12 @@ public class teams {
     private String name;
     private int goals;
     private int goalsAgainst;
-    private int wins;
+    private int wins; // THE SECOND
     private int losses;
     private int ties;
-    private int points;
+    private int points; //THE FIRST
+    private int gamesPlayed; // to show it in the table
+    private int goalsDiff; // Goals for - Goals against (Important in league standings "The Third")
     private List <tournament> registerdTournament;
     private List<student> students;
     
@@ -19,6 +21,8 @@ public class teams {
         this.losses = 0;
         this.ties = 0;
         this.points = 0;
+        this.gamesPlayed = 0;
+        this.goalsDiff = 0;
         registerdTournament= new ArrayList<>();
         this.students=new ArrayList<>();
     }
@@ -50,7 +54,11 @@ public class teams {
     public int getPoints() {
         return points;
     }
-    
+
+    public int getGamesPlayed() {return gamesPlayed;}
+
+    public int getGoalsDiff() {return goalsDiff;}
+
     public List<student> getStudents(){
         return students;
     }
@@ -83,32 +91,40 @@ public class teams {
     public void addWin() {
         this.wins++;
         this.points += 3;
+        this.gamesPlayed +=1;
     }
     public void removeWin() {
         this.wins--;
         this.points -= 3;
+        this.gamesPlayed -=1;
     }
 
     public void addLoss() {
         this.losses++;
+        this.gamesPlayed +=1; // Every lose&win&tie that mean the team played one game more
     }
     public void removeLoss() {
         this.losses--;
+        this.gamesPlayed -=1;
     }
 
     public void removeTie() {
         this.ties--;
         this.points -= 1;
+        this.gamesPlayed -=1;
     }
     public void addTie() {
         this.ties++;
         this.points += 1;
+        this.gamesPlayed +=1;
     }
     public void addGoal() {
         goals++;
+        goalsDiff++;
     }
     public void removeGoal() {
         goals--;
+        goalsDiff--;
     }
     public void addPoints() {
         points++;
