@@ -77,14 +77,17 @@ public class teams {
 
     public void addGoals(int goals) {
         this.goals += goals;
+        this.goalsDiff += goals;
         // or this.goals = matchObj.getScore1 or .getScore2, we can use if statment;
     }
 
     public void addGoalsAgainst(int goalsAgainst) {
         this.goalsAgainst += goalsAgainst;
+        this.goalsDiff -= goals;
     }
     public void removeGoalesAgainst(int goalsAgainst) {
         this.goalsAgainst -= goalsAgainst;
+        this.goalsDiff += goals;
     }
 
 
