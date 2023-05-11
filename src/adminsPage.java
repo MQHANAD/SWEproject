@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 public class adminsPage {
     static boolean confirmed =false;
-    public static void adminLogedin(Stage stage,Scene scane1,ObservableList<tournament> tournaments,TableView <tournament> table){
+    public static void adminLogedin(Stage stage,Scene scane1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -103,7 +103,7 @@ public class adminsPage {
             createTournamentPage.tournamentPageCalled(stage, scene,tournaments);
         });
         creatTeams.setOnAction(e->{
-            creatTeamPage.creatTeamPageCalled(stage, scene);
+            creatTeamPage.creatTeamPageCalled(stage, scene,teamList);
         });
         archivedTournaments.setOnAction(e->{
             // call the method

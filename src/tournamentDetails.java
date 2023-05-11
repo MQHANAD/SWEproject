@@ -130,5 +130,81 @@ public class tournamentDetails {
         stage.setScene(scene); 
         root.requestFocus();
     }
+    public static void viewDetailsForStudentsPageCalled(Stage stage,Scene scane1) {
+        Image image = new Image("file:sports_banners-1200x653.png");
+        ImageView imageView = new ImageView(image);
+
+        imageView.fitHeightProperty().bind(stage.heightProperty());
+        imageView.fitWidthProperty().bind(stage.widthProperty());
+        Button backButton = new Button("Back");
+        
+        Button viewMathes = new Button("Edit");
+        
+        Label label = new Label();
+        Label label1 = new Label();
+        Label label2 = new Label();
+
+        label.setText("tournamnet details, name, type, sport");
+        label1.setText("------------------------");
+        label2.setText("todays mathces(will not appear until the tournament starts)");
+        label.setFont(new Font(30));
+        label1.setFont(new Font(30));
+        label2.setFont(new Font(30));
+
+        VBox vBox =new VBox(label,label1,label2);
+        vBox.setAlignment(Pos.CENTER);
+
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+       
+        viewMathes.setOnMouseEntered(e->{
+            viewMathes.setId("buttonOnTouch");
+        });
+        viewMathes.setOnMouseExited(e->{
+            viewMathes.setId("buttonOut");
+        });
+
+        backButton.setOnAction(e->{
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane1);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            
+        });
+
+       
+        viewMathes.setOnAction(e->{
+            //call the method to view matches page
+        });
+        
+
+
+        HBox butttonsBox = new HBox(20,backButton,viewMathes);
+        butttonsBox.setAlignment(Pos.CENTER);
+
+        backButton.setMaxSize(150 ,30);
+        backButton.setMinSize(100,12.5);
+        
+        viewMathes.setMaxSize(150, 30);
+        viewMathes.setMinSize(100, 12.5);
+
+        VBox box =new VBox(20,vBox,butttonsBox);
+        box.setAlignment(Pos.CENTER);
+        box.prefHeightProperty().bind(stage.heightProperty());
+        box.prefWidthProperty().bind(stage.widthProperty());
+        box.getStyleClass().add("shade");
+
+        Group root = new Group(imageView,box);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
+        stage.setScene(scene); 
+        root.requestFocus();
+    }
 }
 

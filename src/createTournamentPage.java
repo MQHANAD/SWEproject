@@ -88,11 +88,11 @@ public class createTournamentPage {
         createButton.setMinSize(100,12.5);
         
 
-        HBox sportBox = new HBox(65,sport,sports );
-        HBox typeBox = new HBox(75,type,types );
-        HBox nameBox = new HBox(65,nameLabel,name );
+        HBox sportBox = new HBox(73,sport,sports );
+        HBox typeBox = new HBox(83,type,types );
+        HBox nameBox = new HBox(71,nameLabel,name );
         HBox numOfDays = new HBox(0,numberOfDays,numOfStage);
-        HBox numOfplayersBox = new HBox(60,numOfParLabel,numOfPAr );
+        HBox numOfplayersBox = new HBox(66,numOfParLabel,numOfPAr );
         HBox butttonsBox = new HBox(20,backButton,createButton);
         
         sportBox.setAlignment(Pos.CENTER);

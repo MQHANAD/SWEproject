@@ -1,14 +1,16 @@
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class studentPage {
-    public static void studentLogedin(Stage stage,Scene scane1){
+    public static void studentLogedin(Stage stage,Scene scane1, TableView<tournament> table, TableView<teams> table1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -68,13 +70,11 @@ public class studentPage {
         
         
         viewTournament.setOnAction(e->{
-            // call the method
-            // here where the student can register to a tournament
-            // view matches
+            viewTournamentPage.viewTRstudentPageCalled(stage, scene, table);
         });
         
         viewTeams.setOnAction(e->{
-            // call the method
+            viewTeamsPage.viewTeamsPageCalled(stage, scene, table1);
             // here where the student can register to a team
         });
         
