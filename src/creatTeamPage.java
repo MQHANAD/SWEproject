@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -10,7 +11,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class creatTeamPage {
-    public static void creatTeamPageCalled(Stage stage,Scene scane1){
+    public static void creatTeamPageCalled(Stage stage,Scene scane1, ObservableList<teams> teamList){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -87,6 +88,7 @@ public class creatTeamPage {
 
         createButton.setOnAction(e->{
             System.out.println(name.getText());
+            teams.saveTeams(teamList);
             
             //get the student selcted and add them to the team
             

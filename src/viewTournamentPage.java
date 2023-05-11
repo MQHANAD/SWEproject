@@ -1,10 +1,5 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -88,6 +83,7 @@ public class viewTournamentPage {
         editTournament.setMinSize(100, 12.5);
 
         VBox box =new VBox(20,table,butttonsBox);
+        box.setPadding(new Insets(0, 55, 0, 40));
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -100,6 +96,149 @@ public class viewTournamentPage {
         root.requestFocus();
         viewTournamentDetails.setOnAction(e->{
             tournamentDetails.viewDetailsPageCalled(stage, scene);
+        });
+    }
+    public static void viewTRstudentPageCalled(Stage stage,Scene scane1,TableView <tournament> table){
+        Image image = new Image("file:sports_banners-1200x653.png");
+        ImageView imageView = new ImageView(image);
+
+        imageView.fitHeightProperty().bind(stage.heightProperty());
+        imageView.fitWidthProperty().bind(stage.widthProperty());
+        Button backButton = new Button("Back");
+        Button viewTournamentDetails = new Button("View Details");
+        Button registerForTournament = new Button("Register");
+        
+        
+
+
+
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+        viewTournamentDetails.setOnMouseEntered(e->{
+            viewTournamentDetails.setId("buttonOnTouch");
+        });
+        viewTournamentDetails.setOnMouseExited(e->{
+            viewTournamentDetails.setId("buttonOut");
+        });
+        registerForTournament.setOnMouseEntered(e->{
+            registerForTournament.setId("buttonOnTouch");
+        });
+        registerForTournament.setOnMouseExited(e->{
+            registerForTournament.setId("buttonOut");
+        });
+       
+
+        backButton.setOnAction(e->{
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane1);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            
+        });
+
+        
+        registerForTournament.setOnAction(e->{
+            //call the method 
+        });
+        
+
+
+        HBox butttonsBox = new HBox(20,backButton,viewTournamentDetails,registerForTournament);
+        butttonsBox.setAlignment(Pos.CENTER);
+
+        backButton.setMaxSize(150 ,30);
+        backButton.setMinSize(100,12.5);
+        viewTournamentDetails.setMaxSize(150, 30);
+        viewTournamentDetails.setMinSize(100, 12.5);
+        registerForTournament.setMaxSize(150, 30);
+        registerForTournament.setMinSize(100, 12.5);
+        
+
+        VBox box =new VBox(20,table,butttonsBox);
+        box.setPadding(new Insets(0, 55, 0, 40));
+        box.setAlignment(Pos.CENTER);
+        box.prefHeightProperty().bind(stage.heightProperty());
+        box.prefWidthProperty().bind(stage.widthProperty());
+        box.getStyleClass().add("shade");
+
+        Group root = new Group(imageView,box);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
+        stage.setScene(scene); 
+        root.requestFocus();
+        viewTournamentDetails.setOnAction(e->{
+            tournamentDetails.viewDetailsForStudentsPageCalled(stage, scene);
+        });
+    }
+    public static void viewTRForGuestPageCalled(Stage stage,Scene scane1,TableView <tournament> table){
+        Image image = new Image("file:sports_banners-1200x653.png");
+        ImageView imageView = new ImageView(image);
+
+        imageView.fitHeightProperty().bind(stage.heightProperty());
+        imageView.fitWidthProperty().bind(stage.widthProperty());
+        Button backButton = new Button("Back");
+        Button viewTournamentDetails = new Button("View Details");
+
+        backButton.setOnMouseEntered(e ->{
+            backButton.setId("buttonOnTouch");    
+        });
+        backButton.setOnMouseExited(e->{
+            backButton.setId("buttonOut");    
+        });
+
+        viewTournamentDetails.setOnMouseEntered(e->{
+            viewTournamentDetails.setId("buttonOnTouch");
+        });
+        viewTournamentDetails.setOnMouseExited(e->{
+            viewTournamentDetails.setId("buttonOut");
+        });
+        
+       
+
+        backButton.setOnAction(e->{
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane1);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            
+        });
+
+        
+        
+        
+
+
+        HBox butttonsBox = new HBox(20,backButton,viewTournamentDetails);
+        butttonsBox.setAlignment(Pos.CENTER);
+
+        backButton.setMaxSize(150 ,30);
+        backButton.setMinSize(100,12.5);
+        viewTournamentDetails.setMaxSize(150, 30);
+        viewTournamentDetails.setMinSize(100, 12.5);
+        
+        
+
+        VBox box =new VBox(20,table,butttonsBox);
+        box.setPadding(new Insets(0, 55, 0, 40));
+        box.setAlignment(Pos.CENTER);
+        box.prefHeightProperty().bind(stage.heightProperty());
+        box.prefWidthProperty().bind(stage.widthProperty());
+        box.getStyleClass().add("shade");
+
+        Group root = new Group(imageView,box);
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("style.css");
+        stage.setScene(scene); 
+        root.requestFocus();
+        viewTournamentDetails.setOnAction(e->{
+            tournamentDetails.viewDetailsForStudentsPageCalled(stage, scene);
         });
     }
     

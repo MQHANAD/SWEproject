@@ -1,4 +1,3 @@
-import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -11,7 +10,7 @@ import java.util.UUID;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+
 public class tournament implements Serializable {
     private String name;
     private String type;

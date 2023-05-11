@@ -14,8 +14,9 @@ import javafx.stage.Stage;
 public class tournamentMaker extends Application { 
 
     private TableView<tournament>  table = new TableView<>();
+    private TableView<teams>  table1 = new TableView<>();
     ObservableList<tournament> tournaments=tournament.loadTournaments();
-   
+    ObservableList<teams> teamList = teams.loadTeams();
     @Override
     public void start(Stage stage) {       
         // background image
@@ -52,7 +53,23 @@ public class tournamentMaker extends Application {
         table=new TableView<>();
         table.setItems(tournaments);
         table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn);
+        
+        //teams table
+        // Name column
+        TableColumn<teams,String> namCoulmn = new TableColumn<>("Name");
+        namCoulmn.setMinWidth(200);
+        namCoulmn.setCellValueFactory(new PropertyValueFactory("name"));
 
+        // NumOfParticibents column get
+        TableColumn<teams,Integer> numOfPlayersCoulmn = new TableColumn<>("Number Of Player");
+        numOfPlayersCoulmn.setMinWidth(200);
+        numOfPlayersCoulmn.setCellValueFactory(new PropertyValueFactory("numOfPlayers"));
+
+        table1=new TableView<>();
+        table1.setItems(teamList);
+        table1.getColumns().addAll(namCoulmn,numOfPlayersCoulmn );
+        
+        
         
 
         
@@ -116,13 +133,13 @@ public class tournamentMaker extends Application {
 
         // loging in scene
         admin.setOnAction(e->{
-            loginPage.login(stage,scene,1,menu,tournaments,table);
+            loginPage.login(stage,scene,1,menu,tournaments,table,teamList,table1);
         });
         student.setOnAction(e->{
-            loginPage.login(stage,scene,2,menu,tournaments,table);
+            loginPage.login(stage,scene,2,menu,tournaments,table,teamList,table1);
         });
         guest.setOnAction(e->{
-            guestPage.guestLogedin(stage, scene);
+            guestPage.guestLogedin(stage, scene,table);
         });
 
     }

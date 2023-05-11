@@ -35,7 +35,7 @@
 .normal-color{
     -fx-text-fill: black;
     
-    -fx-background-color: rgba(53, 53, 53, 0.616) ;
+    -fx-background-color: rgba(55, 64, 75, 0.616) ;
     -fx-background-radius: 15;
     -fx-font-weight: bold;
     -fx-border-color: black;
@@ -81,3 +81,60 @@
 #bold{
     -fx-font-weight: bold;
 }
+
+.table-view {
+    -fx-background-color: transparent;
+    
+    
+ }
+ 
+ .table-view:focused{
+     -fx-background-color: transparent;
+     
+     
+     
+ }
+ 
+ 
+ 
+ .table-view .column-header-background{
+     -fx-background-color: linear-gradient(rgba(0, 0, 0, 0.600) , rgba(0, 0, 0) );
+     
+ }
+ 
+ .table-view .column-header-background .label{
+     -fx-background-color: transparent;
+     -fx-text-fill: white;
+     
+ }
+ 
+ .table-view .column-header {
+     -fx-background-color: transparent;
+     
+ }
+ 
+ .table-view .table-cell{
+     -fx-text-fill:white;
+     
+ }
+ 
+ .table-row-cell{
+     -fx-background-color: -fx-table-cell-border-color, rgba(55, 64, 75, 0.890);
+     
+     -fx-padding: 0;
+    
+ }
+ 
+ .table-row-cell:odd{
+     -fx-background-color: -fx-table-cell-border-color, rgba(55, 64, 75,0.890);
+     
+     -fx-padding: 0;
+     ;
+ }
+ 
+ .table-row-cell:selected {
+     -fx-background-color: rgba(148, 148, 148, 0.993);
+     
+     
+ }
+ 
