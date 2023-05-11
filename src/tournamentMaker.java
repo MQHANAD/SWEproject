@@ -1,5 +1,4 @@
 import javafx.application.Application;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -12,11 +11,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-public class tournamentMaker extends Application {   
-    public static TableView<tournament> table;
+public class tournamentMaker extends Application { 
+
+    private TableView<tournament>  table = new TableView<>();
+    ObservableList<tournament> tournaments=tournament.loadTournaments();
    
     @Override
-    public void start(Stage stage) {
+    public void start(Stage stage) {       
         // background image
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
@@ -26,29 +27,30 @@ public class tournamentMaker extends Application {
         // ------------------------------------------------------------------------------------
 
         // tournaments table
-
-        // name column
+        
+        
+        // Name column
         TableColumn<tournament,String> nameCoulmn = new TableColumn<>("Name");
         nameCoulmn.setMinWidth(200);
         nameCoulmn.setCellValueFactory(new PropertyValueFactory("name"));
 
-        // type column
+        // Type column
         TableColumn<tournament,String> typeCoulmn = new TableColumn<>("Type");
-        nameCoulmn.setMinWidth(200);
-        nameCoulmn.setCellValueFactory(new PropertyValueFactory("type"));
+        typeCoulmn.setMinWidth(200);
+        typeCoulmn.setCellValueFactory(new PropertyValueFactory("type"));
 
-        // sport column
+        // Sport column
         TableColumn<tournament,String> sportCoulmn = new TableColumn<>("Sport");
-        nameCoulmn.setMinWidth(200);
-        nameCoulmn.setCellValueFactory(new PropertyValueFactory("sport"));
+        sportCoulmn.setMinWidth(200);
+        sportCoulmn.setCellValueFactory(new PropertyValueFactory("sport"));
 
-        // numOfParticibents column
-        TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("NumOfParticibents");
-        nameCoulmn.setMinWidth(200);
-        nameCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
+        // NumOfParticibents column get
+        TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("Number Of Particibents");
+        numOfParticibentsCoulmn.setMinWidth(200);
+        numOfParticibentsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
 
         table=new TableView<>();
-        table.setItems(getTournament());
+        table.setItems(tournaments);
         table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn);
 
         
@@ -114,10 +116,10 @@ public class tournamentMaker extends Application {
 
         // loging in scene
         admin.setOnAction(e->{
-            loginPage.login(stage,scene,1,menu);
+            loginPage.login(stage,scene,1,menu,tournaments,table);
         });
         student.setOnAction(e->{
-            loginPage.login(stage,scene,2,menu);
+            loginPage.login(stage,scene,2,menu,tournaments,table);
         });
         guest.setOnAction(e->{
             guestPage.guestLogedin(stage, scene);
@@ -129,11 +131,7 @@ public class tournamentMaker extends Application {
         launch();
     }
 
-    public ObservableList<tournament> getTournament(){
-        ObservableList<tournament> tournaments=FXCollections.observableArrayList();
-        tournaments.add(new tournament());
-        return tournaments;
-    }
+    
 
 }
 

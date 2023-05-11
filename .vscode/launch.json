@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test2",
+            "request": "launch",
+            "mainClass": "test2",
+            "projectName": "SWEproject_ed48fd61"
+        },
+        {
+            "type": "java",
             "name": "tournamentMaker",
             "request": "launch",
             "mainClass": "tournamentMaker",

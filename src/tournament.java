@@ -1,7 +1,18 @@
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-public class tournament {
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.fxml.FXML;
+public class tournament implements Serializable {
     private String name;
     private String type;
     private String sport;
@@ -30,21 +41,24 @@ public class tournament {
     public String getName() {
         return name;
     }
+    public String getType() {
+        return type;
+    }
+    public String getSport() {
+        return sport;
+    }
+    public int getNumOfParticibents() {
+        return numOfParticibents;
+    }
     public List<teams> getParticipant() {
         return participant;
     }
     public int getId() {
         return id;
     }
-    public String getType() {
-        return type;
-    }
-    public int getNumOfParticibents() {
-        return numOfParticibents;
-    }
-    public String getSport() {
-        return sport;
-    }
+    
+    
+    
     public teams getWinner() {
         return winner;
     }
@@ -82,4 +96,43 @@ public class tournament {
     public void removeParticipant(teams participant) {
         this.participant.remove(participant);
     }    
+    public static ObservableList loadTournaments(){
+        ObservableList tournaments = FXCollections.observableArrayList();
+        // reading from a file 
+        File file = new File("tournaments.dat");
+        try {
+            FileInputStream fis = new FileInputStream(file);
+            try (ObjectInputStream ois = new ObjectInputStream(fis)) {
+                tournaments = FXCollections.observableList((List<tournament>) ois.readObject());
+                ois.close();
+                fis.close();
+            }
+            
+        } catch (Exception e) {
+            
+        }
+        return tournaments;
+        
+
+    }
+    public static void saveTournaments(ObservableList tournaments){
+        File file = new File("tournaments.dat");
+        try {
+            if (!file.exists()){
+                file.createNewFile();
+            }
+            FileOutputStream fos = new FileOutputStream(file);
+            try (ObjectOutputStream oos = new ObjectOutputStream(fos)) {
+                oos.writeObject(new ArrayList<>(tournaments));
+                oos.close();
+                fos.close();
+            }
+
+        } catch (Exception e) {
+            // TODO: handle exception
+            
+            
+           
+        }
+    }
 }

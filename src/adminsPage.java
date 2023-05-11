@@ -1,7 +1,11 @@
+import java.util.ArrayList;
+
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
@@ -9,7 +13,7 @@ import javafx.stage.Stage;
 
 public class adminsPage {
     static boolean confirmed =false;
-    public static void adminLogedin(Stage stage,Scene scane1){
+    public static void adminLogedin(Stage stage,Scene scane1,ObservableList<tournament> tournaments,TableView <tournament> table){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -93,10 +97,10 @@ public class adminsPage {
             // here where the admin can add students/teams to tournaments
             // remove students/teams from the tournaments
             // view mathes 
-            viewTournamentPage.viewtournamentPageCalled(stage, scene);
+            viewTournamentPage.viewtournamentPageCalled(stage, scene,table);
         });
         creatTournament.setOnAction(e->{
-            createTournamentPage.tournamentPageCalled(stage, scene);
+            createTournamentPage.tournamentPageCalled(stage, scene,tournaments);
         });
         creatTeams.setOnAction(e->{
             creatTeamPage.creatTeamPageCalled(stage, scene);

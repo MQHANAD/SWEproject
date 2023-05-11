@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -5,7 +7,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -15,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class createTournamentPage {
-    public static void tournamentPageCalled(Stage stage,Scene scane1){
+    public static void tournamentPageCalled(Stage stage,Scene scane1,ObservableList<tournament> tournaments){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -129,20 +130,19 @@ public class createTournamentPage {
             System.out.println(sports.getValue());
             System.out.println(numOfPAr.getValue());
             System.out.println(numOfStage.getValue());
-            
 
+            
+            
             if(types.getValue().equals("Elimination")){
                 // create elimination tournament
-                tournament tr = new elimination(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
-                tournamentMaker.table.getItems().add(tr);
-                System.out.println(tournamentMaker.table.toString());
-                 
+                tournaments.add(new elimination(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue()));
+                tournament.saveTournaments(tournaments);
                 
             }
             else if(types.getValue().equals("Round Robin")){
                 //create Round Robin tournament
-                tournament tr = new roundRobin(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue());
-                tournamentMaker.table.getItems().add(tr);
+                tournaments.add(new roundRobin(name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue()));
+                tournament.saveTournaments(tournaments);
             }
             
 

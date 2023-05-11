@@ -1,18 +1,23 @@
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.TableView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import javafx.scene.text.Font;
 
 public class viewTournamentPage {
-    public static void viewtournamentPageCalled(Stage stage,Scene scane1){
+    public static void viewtournamentPageCalled(Stage stage,Scene scane1,TableView <tournament> table){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
 
@@ -82,7 +87,7 @@ public class viewTournamentPage {
         editTournament.setMaxSize(150, 30);
         editTournament.setMinSize(100, 12.5);
 
-        VBox box =new VBox(20,tournamentMaker.table,butttonsBox);
+        VBox box =new VBox(20,table,butttonsBox);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -97,4 +102,8 @@ public class viewTournamentPage {
             tournamentDetails.viewDetailsPageCalled(stage, scene);
         });
     }
+    
 }
+
+
+

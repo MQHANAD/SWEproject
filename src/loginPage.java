@@ -1,8 +1,12 @@
+import java.util.ArrayList;
+
+import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -11,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1,int i,VBox box1){
+    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -84,7 +88,7 @@ public class loginPage {
             // email.getText();
             // password.getText();
              if(i==1)//if admin
-                 adminsPage.adminLogedin(stage, scane1);
+                 adminsPage.adminLogedin(stage, scane1,tournaments,table);
              else if(i==2)//if student
                 studentPage.studentLogedin(stage, scane1);
             

@@ -87,6 +87,7 @@ public class creatTeamPage {
 
         createButton.setOnAction(e->{
             System.out.println(name.getText());
+            
             //get the student selcted and add them to the team
             
 
