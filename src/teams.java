@@ -37,6 +37,9 @@ public class teams {
         numOfPlayers=0;
     }
 
+    public teams(String text, ArrayList<student> chosenStudents) {
+    }
+
     public int getNumOfPlayers() {
         return students.size();
     }

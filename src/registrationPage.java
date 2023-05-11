@@ -17,9 +17,9 @@ import javafx.stage.Stage;
 public class registrationPage {
     //list of registerd students and admins
     private static ArrayList<Admin> admins= new ArrayList<>(); 
-    private static ArrayList<student> students = new ArrayList<>(); 
+     
 
-    public static void registraionButtonClicked(int i,Stage stage,Scene scane1){//if i == 1 then admin registering, if i == 2 then it's student
+    public static void registraionButtonClicked(int i,Stage stage,Scene scane1, ArrayList<student> studentsList){//if i == 1 then admin registering, if i == 2 then it's student
         TextField name = new TextField();
         PasswordField password = new PasswordField();
         TextField email = new TextField();
@@ -122,7 +122,7 @@ public class registrationPage {
             }
             else if (i==2){//2 for student
                 //adding the student arraylist to a file.dat
-                students.add(new student(name.getText(),email.getText(),password.getText()));
+                studentsList.add(new student(name.getText(),email.getText(),password.getText()));
                 
                try{
                 File studentsFile = new File("students.dat");
@@ -131,7 +131,7 @@ public class registrationPage {
                 }
                 FileOutputStream fos = new FileOutputStream(studentsFile);
                 ObjectOutputStream oos = new ObjectOutputStream(fos);
-                oos.writeObject(students);
+                oos.writeObject(studentsList);
                 oos.close();
                 fos.close();
                 

@@ -15,7 +15,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
+    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1, ArrayList<student> studentsList){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -88,7 +88,7 @@ public class loginPage {
             // email.getText();
             // password.getText();
              if(i==1)//if admin
-                 adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1);
+                 adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1,studentsList);
              else if(i==2)//if student
                 studentPage.studentLogedin(stage, scane1,table,table1);
             
@@ -102,7 +102,7 @@ public class loginPage {
             
         });
         register.setOnAction(e->{
-            registrationPage.registraionButtonClicked(i, stage ,scene);
+            registrationPage.registraionButtonClicked(i, stage ,scene,studentsList);
         });
     }    
 }
