@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
@@ -31,31 +36,31 @@ public class loginPage {
         Button register = new Button("sign up");
 
         login.setOnMouseEntered(e ->{
-            login.setId("buttonOnTouch");    
+            login.setId("buttonOnTouch");
         });
         login.setOnMouseExited(e->{
-            login.setId("buttonOut");    
+            login.setId("buttonOut");
         });
 
         backButton.setOnMouseEntered(e ->{
-            backButton.setId("buttonOnTouch");    
+            backButton.setId("buttonOnTouch");
         });
         backButton.setOnMouseExited(e->{
-            backButton.setId("buttonOut");    
+            backButton.setId("buttonOut");
         });
 
         register.setOnMouseEntered(e ->{
-            register.setId("buttonOnTouch");    
+            register.setId("buttonOnTouch");
         });
         register.setOnMouseExited(e->{
-            register.setId("buttonOut");    
+            register.setId("buttonOut");
         });
 
 
         email.setPromptText("Email");
         password.setPromptText("Password");
 
-        
+
         email.setMaxSize(300 ,60);
         email.setMinSize(200,25);
         password.setMaxSize(300 ,60);
@@ -82,16 +87,43 @@ public class loginPage {
         scene.getStylesheets().add("style.css");
         stage.setScene(scene);
         root.requestFocus();
-        
+
         // extacting informaion and checking if the the email is available
         login.setOnAction(e->{
             // email.getText();
             // password.getText();
-             if(i==1)//if admin
+            String inpUsername = email.getText();
+            String inpPassword = password.getText();
+            URL url = null; // i put the password and user name just to test but it need to be removed
+            try {
+                url = new URL("https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn" + "?" + "username=" + inpUsername +"&"+ "password=" + inpPassword);
+            } catch (MalformedURLException ex) {
+                throw new RuntimeException(ex);
+            }
+            HttpURLConnection con = null;
+            try {
+                con = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            try {
+                con.setRequestMethod("GET");
+            } catch (ProtocolException ex) {
+                throw new RuntimeException(ex);
+            }
+            con.setConnectTimeout(5000);
+            con.setReadTimeout(5000);
+            int status;
+            try {
+                status = con.getResponseCode();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            if (i == 1 && status == 200)//if admin
                  adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1,studentsList);
              else if(i==2)//if student
                 studentPage.studentLogedin(stage, scane1,table,table1);
-            
+
         });
         backButton.setOnAction(e->{
             double width =stage.getWidth();
@@ -99,10 +131,10 @@ public class loginPage {
             stage.setScene(scane1);
             stage.setHeight(heigt);
             stage.setWidth(width);
-            
+
         });
         register.setOnAction(e->{
             registrationPage.registraionButtonClicked(i, stage ,scene,studentsList);
         });
-    }    
+    }
 }

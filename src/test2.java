@@ -12,8 +12,8 @@ public class test2 {
         array.add(2);
         array.add(3);
         array.add(4);
-        ListView<Integer> list = new ListView<>(array);
-        System.out.println(list.getItems().get(0));
+        //ListView<Integer> list = new ListView<>(array);
+        //System.out.println(list.getItems().get(0));
 
     }
 }
