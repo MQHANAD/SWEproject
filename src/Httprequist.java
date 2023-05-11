@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class Httprequist {
     public static void main(String[] args) throws IOException {
-        URL url = new URL("https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=6412&password=7562");
+        URL url = new URL("https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn?username=6412&password=7562"); // i put the password and user name just to test but it need to be removed
         HttpURLConnection con = (HttpURLConnection) url.openConnection();
         con.setRequestMethod("GET");
         con.setConnectTimeout(5000);
