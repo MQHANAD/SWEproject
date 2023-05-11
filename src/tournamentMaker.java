@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
@@ -12,7 +14,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 public class tournamentMaker extends Application { 
-
+    private ArrayList <student> studentsList = student.loadStudents();
     private TableView<tournament>  table = new TableView<>();
     private TableView<teams>  table1 = new TableView<>();
     ObservableList<tournament> tournaments=tournament.loadTournaments();
@@ -133,10 +135,10 @@ public class tournamentMaker extends Application {
 
         // loging in scene
         admin.setOnAction(e->{
-            loginPage.login(stage,scene,1,menu,tournaments,table,teamList,table1);
+            loginPage.login(stage,scene,1,menu,tournaments,table,teamList,table1,studentsList);
         });
         student.setOnAction(e->{
-            loginPage.login(stage,scene,2,menu,tournaments,table,teamList,table1);
+            loginPage.login(stage,scene,2,menu,tournaments,table,teamList,table1,studentsList);
         });
         guest.setOnAction(e->{
             guestPage.guestLogedin(stage, scene,table);
