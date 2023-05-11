@@ -12,7 +12,6 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import java.util.*;
 public class tournamentMaker extends Application {   
     public static TableView<tournament> table;
    

@@ -36,15 +36,20 @@ public class createTournamentPage {
         numOfParLabel.setId("bold");
         Label nameLabel = new Label("Name");
         nameLabel.setId("bold");
+        Label numberOfDays = new Label("Number Of Days \n Between Stages");
+        numberOfDays.setId("bold");
         ChoiceBox <String> types = new ChoiceBox<>();
         ChoiceBox <String> sports = new ChoiceBox<>();
         ChoiceBox <Integer> numOfPAr = new ChoiceBox<>();
+        ChoiceBox <Integer> numOfStage = new ChoiceBox<>();
         types.getStyleClass().add("normal-color");
         sports.getStyleClass().add("normal-color");
         numOfPAr.getStyleClass().add("normal-color");
+        numOfStage.getStyleClass().add("normal-color");
         types.getItems().addAll("Elimination","Round Robin");
-        sports.getItems().addAll("FootBall","BasketBall","tennis");
+        sports.getItems().addAll("FootBall","BasketBall","tennis","Volleyball");
         numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
+        numOfStage.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
         type.setFont(new Font(20));
         numOfParLabel.setFont(new Font(20));
         sport.setFont(new Font(20));
@@ -75,16 +80,18 @@ public class createTournamentPage {
         types.setMinWidth(300);
         sports.setMinWidth(300);
         numOfPAr.setMinWidth(300);
+        numOfStage.setMinWidth(300);
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
         createButton.setMaxSize(150 ,30);
         createButton.setMinSize(100,12.5);
         
 
-        HBox sportBox = new HBox(18,sport,sports );
-        HBox typeBox = new HBox(18,type,types );
-        HBox nameBox = new HBox(14,nameLabel,name );
-        HBox numOfplayersBox = new HBox(1,numOfParLabel,numOfPAr );
+        HBox sportBox = new HBox(65,sport,sports );
+        HBox typeBox = new HBox(75,type,types );
+        HBox nameBox = new HBox(65,nameLabel,name );
+        HBox numOfDays = new HBox(0,numberOfDays,numOfStage);
+        HBox numOfplayersBox = new HBox(60,numOfParLabel,numOfPAr );
         HBox butttonsBox = new HBox(20,backButton,createButton);
         
         sportBox.setAlignment(Pos.CENTER);
@@ -92,9 +99,10 @@ public class createTournamentPage {
         numOfplayersBox.setAlignment(Pos.CENTER);
         nameBox.setAlignment(Pos.CENTER);
         butttonsBox.setAlignment(Pos.CENTER);
+        numOfDays.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(10,nameBox,sportBox,numOfplayersBox,typeBox,butttonsBox);
+        VBox box = new VBox(10,nameBox,sportBox,numOfplayersBox,typeBox, numOfDays ,butttonsBox);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -120,6 +128,7 @@ public class createTournamentPage {
             System.out.println(types.getValue());
             System.out.println(sports.getValue());
             System.out.println(numOfPAr.getValue());
+            System.out.println(numOfStage.getValue());
             
 
             if(types.getValue().equals("Elimination")){
