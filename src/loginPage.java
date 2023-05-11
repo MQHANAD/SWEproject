@@ -1,3 +1,8 @@
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
 import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
@@ -14,7 +19,8 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class loginPage {
+public class loginPage extends Httprequist {
+
     public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
@@ -84,14 +90,39 @@ public class loginPage {
         root.requestFocus();
         
         // extacting informaion and checking if the the email is available
-        login.setOnAction(e->{
-            // email.getText();
-            // password.getText();
-             if(i==1)//if admin
-                 adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1);
-             else if(i==2)//if student
-                studentPage.studentLogedin(stage, scane1,table,table1);
-            
+        login.setOnAction(e-> {
+            String inpUsername = email.getText();
+            String inpPassword = password.getText();
+            URL url = null; // i put the password and user name just to test but it need to be removed
+            try {
+                url = new URL("https://us-central1-swe206-221.cloudfunctions.net/app/UserSignIn" + "?" + "username=" + inpUsername +"&"+ "password=" + inpPassword);
+            } catch (MalformedURLException ex) {
+                throw new RuntimeException(ex);
+            }
+            HttpURLConnection con = null;
+            try {
+                con = (HttpURLConnection) url.openConnection();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            try {
+                con.setRequestMethod("GET");
+            } catch (ProtocolException ex) {
+                throw new RuntimeException(ex);
+            }
+            con.setConnectTimeout(5000);
+            con.setReadTimeout(5000);
+            int status;
+            try {
+                status = con.getResponseCode();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            if (i == 1 && status == 200)//if admin
+                adminsPage.adminLogedin(stage, scane1, tournaments, table, teamList, table1);
+            else if (i == 2)//if student
+                studentPage.studentLogedin(stage, scane1, table, table1);
+
         });
         backButton.setOnAction(e->{
             double width =stage.getWidth();
