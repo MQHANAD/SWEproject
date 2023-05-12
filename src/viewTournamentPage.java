@@ -1,4 +1,5 @@
 
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -67,6 +68,10 @@ public class viewTournamentPage {
         });
         deleteTournament.setOnAction(e->{
             //call the method to delete the tournament
+            ObservableList<tournament> tournamentSelected, allTournaments;
+            allTournaments=table.getItems();
+            tournamentSelected=table.getSelectionModel().getSelectedItems();
+            tournamentSelected.forEach(allTournaments::remove);
         });
 
 
