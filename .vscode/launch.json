@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "test",
+            "request": "launch",
+            "mainClass": "test",
+            "projectName": "SWEproject_231644f3"
+        },
+        {
+            "type": "java",
             "name": "Httprequist",
             "request": "launch",
             "mainClass": "Httprequist",
@@ -93,7 +100,7 @@
             "name": "Current File",
             "request": "launch",
             "mainClass": "${file}",
-            "vmArgs": "--module-path lib --add-modules javafx.controls,javafx.fxml"
+            "vmArgs": "--module-path /Users/asus/Downloads/javafx-sdk-20.0.1/lib --add-modules javafx.controls,javafx.fxml"
         }
     ]
 }

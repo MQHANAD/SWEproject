@@ -48,8 +48,8 @@ public class createTournamentPage {
         numOfPAr.getStyleClass().add("normal-color");
         numOfStage.getStyleClass().add("normal-color");
         types.getItems().addAll("Elimination","Round Robin");
-        sports.getItems().addAll("FootBall","BasketBall","tennis","Volleyball");
-        numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11);
+        sports.getItems().addAll("Football","Basketball","Tennis","Volleyball");
+        numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
         numOfStage.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
         type.setFont(new Font(20));
         numOfParLabel.setFont(new Font(20));

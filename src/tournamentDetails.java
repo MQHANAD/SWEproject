@@ -28,9 +28,9 @@ public class tournamentDetails {
         Label label1 = new Label();
         Label label2 = new Label();
 
-        label.setText("tournamnet details, name, type, sport");
+        label.setText("tournament details, name, type, sport");
         label1.setText("------------------------");
-        label2.setText("todays mathces(will not appear until the tournament starts)");
+        label2.setText("today's matches(will not appear until the tournament starts)");
         label.setFont(new Font(30));
         label1.setFont(new Font(30));
         label2.setFont(new Font(30));
@@ -146,7 +146,7 @@ public class tournamentDetails {
 
         label.setText("tournamnet details, name, type, sport");
         label1.setText("------------------------");
-        label2.setText("todays mathces(will not appear until the tournament starts)");
+        label2.setText("today's matches(will not appear until the tournament starts)");
         label.setFont(new Font(30));
         label1.setFont(new Font(30));
         label2.setFont(new Font(30));
