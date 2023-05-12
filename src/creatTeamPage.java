@@ -18,9 +18,8 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class creatTeamPage {
-    static ArrayList<student>  chosenStudents = new ArrayList<>();
+    
     public static void creatTeamPageCalled(Stage stage,Scene scane1, ObservableList<teams> teamList){
-        ArrayList<student>  chosenStudents = new ArrayList<>();
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -95,24 +94,18 @@ public class creatTeamPage {
             
         });
         selectTeamMembers.setOnAction(e->{
-            selectMembersClicked(stage,scene);
+            selectMembersClicked(stage,scene,teamList,name.getText());
         });
 
         createButton.setOnAction(e->{
             System.out.println(name.getText());
-            teamList.add(new teams(name.getText(),chosenStudents));
+            teamList.add(new teams(name.getText()));
             teams.saveTeams(teamList);
-            
-            //get the student selcted and add them to the team
-            
-
-        
-            
 
         });
            
     }
-    public static  void selectMembersClicked(Stage stage,Scene scane1 ){
+    public static  void selectMembersClicked(Stage stage,Scene scane1,ObservableList<teams> teamList ,String name){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -128,12 +121,11 @@ public class creatTeamPage {
             studentListView.getItems().add((student) studentsList.get(i));
         }
         
-        TextField name = new TextField();
-        name.getStyleClass().add("normal-color");
+        
     
         Button backButton = new Button("Back");
         
-        Button selectTeamMembers = new Button("Add members");
+        Button selectTeamMembers = new Button("Create");
 
         backButton.setOnMouseEntered(e ->{
             backButton.setId("buttonOnTouch");    
@@ -152,18 +144,19 @@ public class creatTeamPage {
         });
 
     
-        name.setPromptText("Team Name");
-        name.setMaxWidth(300);
-        selectTeamMembers.setMaxWidth(300);
+        
+        
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
+        selectTeamMembers.setMaxSize(150 ,30);
+        selectTeamMembers.setMinSize(100,12.5);
         
         
 
         
         HBox butttonsBox = new HBox(20,backButton,selectTeamMembers);
         
-        name.setAlignment(Pos.CENTER);
+        
         selectTeamMembers.setAlignment(Pos.CENTER);
         butttonsBox.setAlignment(Pos.CENTER);
 
@@ -182,9 +175,9 @@ public class creatTeamPage {
         root.requestFocus();
 
         selectTeamMembers.setOnAction(e->{
-            
-            chosenStudents = (ArrayList<student>) studentListView.getSelectionModel().getSelectedItems();
-            
+            teamList.add(new teams(name,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems())));
+            teams.saveTeams(teamList);
+                
         });
         backButton.setOnAction(e->{
             double width =stage.getWidth();

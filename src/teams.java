@@ -1,14 +1,16 @@
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-public class teams {
+public class teams implements Serializable {
     private String name;
     private int goals;
     private int goalsAgainst;
@@ -19,7 +21,7 @@ public class teams {
     private int gamesPlayed; // to show it in the table
     private int goalsDiff; // Goals for - Goals against (Important in league standings "The Third")
     private List <tournament> registerdTournament;
-    private List<student> students;
+    private ArrayList <student> students;
     private int numOfPlayers;
     
     public teams(String name) {
@@ -33,15 +35,17 @@ public class teams {
         this.gamesPlayed = 0;
         this.goalsDiff = 0;
         registerdTournament= new ArrayList<>();
-        this.students=new ArrayList<>();
         numOfPlayers=0;
     }
 
-    public teams(String text, ArrayList<student> chosenStudents) {
+    public teams(String text, ArrayList<student> List) {
+        this.name=text;
+        this.students=List;
+        this.numOfPlayers=List.size();
     }
 
     public int getNumOfPlayers() {
-        return students.size();
+        return numOfPlayers;
     }
     public void setNumOfPlayers(int numOfPlayers) {
         this.numOfPlayers = numOfPlayers;
@@ -169,8 +173,11 @@ public class teams {
                 fis.close();
             }
             
-        } catch (Exception e) {
-            
+        }catch(IOException e){
+            System.out.println("IO");
+        }
+         catch (Exception e) {
+            System.out.println("error");
         }
         return teamsList;
         
@@ -189,7 +196,14 @@ public class teams {
                 fos.close();
             }
 
-        } catch (Exception e) {
+        }catch(FileNotFoundException e){
+            System.out.println("file not found");
+        }
+        catch(IOException e){
+            System.out.println("IO");
+        } 
+        
+        catch (Exception e) {
             // TODO: handle exception
             
             
