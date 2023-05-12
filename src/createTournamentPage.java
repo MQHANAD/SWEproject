@@ -126,15 +126,12 @@ public class createTournamentPage {
         });
 
         createButton.setOnAction(e->{
-            System.out.println(types.getValue());
-            System.out.println(sports.getValue());
-            System.out.println(numOfPAr.getValue());
-            System.out.println(numOfStage.getValue());
+            
 
             
             
             
-            pickTeamspage.viewTeams(stage, scene, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
+            pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
             
 
         });

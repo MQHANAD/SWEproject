@@ -16,7 +16,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 public class pickTeamspage {
 
-    public static  void viewTeams(Stage stage,Scene scane1,ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages){
+    public static  void viewTeams(Stage stage,Scene scane1,Scene scane12, ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -97,6 +97,12 @@ public class pickTeamspage {
                 tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
                 tournament.saveTournaments(tournaments);
             }
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane12);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            confirmationMessage.display("Tournament Created!!");
             
                 
         });

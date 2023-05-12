@@ -31,8 +31,7 @@ public class creatTeamPage {
         name.getStyleClass().add("normal-color");
     
         Button backButton = new Button("Back");
-        Button createButton = new Button( "Create");
-        Button selectTeamMembers = new Button("Add members");
+        Button createButton = new Button( "Add Members");
 
         backButton.setOnMouseEntered(e ->{
             backButton.setId("buttonOnTouch");    
@@ -48,17 +47,11 @@ public class creatTeamPage {
             createButton.setId("buttonOut");    
         });
 
-        selectTeamMembers.setOnMouseEntered(e ->{
-            selectTeamMembers.setId("buttonOnTouch");    
-        });
-        selectTeamMembers.setOnMouseExited(e->{
-            selectTeamMembers.setId("buttonOut");    
-        });
+        
 
     
         name.setPromptText("Team Name");
         name.setMaxWidth(300);
-        selectTeamMembers.setMaxWidth(300);
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
         createButton.setMaxSize(150 ,30);
@@ -69,11 +62,11 @@ public class creatTeamPage {
         HBox butttonsBox = new HBox(20,backButton,createButton);
         
         name.setAlignment(Pos.CENTER);
-        selectTeamMembers.setAlignment(Pos.CENTER);
+        
         butttonsBox.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(10,name,selectTeamMembers,butttonsBox);
+        VBox box = new VBox(10,name,butttonsBox);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -93,19 +86,16 @@ public class creatTeamPage {
             stage.setWidth(width);
             
         });
-        selectTeamMembers.setOnAction(e->{
-            selectMembersClicked(stage,scene,teamList,name.getText());
-        });
+        
 
         createButton.setOnAction(e->{
-            System.out.println(name.getText());
-            teamList.add(new teams(name.getText()));
-            teams.saveTeams(teamList);
+            selectMembersClicked(stage,scene,scane1,teamList,name.getText());
+            
 
         });
            
     }
-    public static  void selectMembersClicked(Stage stage,Scene scane1,ObservableList<teams> teamList ,String name){
+    public static  void selectMembersClicked(Stage stage,Scene scane1,Scene scane12, ObservableList<teams> teamList ,String name){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -177,6 +167,12 @@ public class creatTeamPage {
         selectTeamMembers.setOnAction(e->{
             teamList.add(new teams(name,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems())));
             teams.saveTeams(teamList);
+            confirmationMessage.display("Team Created!");
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane12);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
                 
         });
         backButton.setOnAction(e->{
