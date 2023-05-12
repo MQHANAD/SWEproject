@@ -1,4 +1,6 @@
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
@@ -57,7 +59,7 @@ public class loginPage {
         });
 
 
-        email.setPromptText("Email");
+        email.setPromptText("Username");
         password.setPromptText("Password");
 
 
@@ -90,6 +92,7 @@ public class loginPage {
 
         // extacting informaion and checking if the the email is available
         login.setOnAction(e->{
+            int count = 0;
             // email.getText();
             // password.getText();
             String inpUsername = email.getText();
@@ -119,9 +122,39 @@ public class loginPage {
             } catch (IOException ex) {
                 throw new RuntimeException(ex);
             }
-            if (i == 1 && status == 200)//if admin
+            String inputLine;
+            String[] words = null;
+            BufferedReader in = null;
+            try {
+                in = new BufferedReader(
+                        new InputStreamReader(con.getInputStream()));
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            StringBuffer content = new StringBuffer();
+
+
+            while (true){
+                try {
+                    if (!((inputLine = in.readLine()) != null)) break;
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+                content.append(inputLine);
+                words = inputLine.split(",");
+                for (String word : words)
+                {
+                    if (word.equals("\"type\":\"student\""))   //Search for the given word
+                    {
+                        count++;
+                    }
+
+                }
+
+            }
+            if (i == 1 && status == 200 && count == 0)//if admin
                  adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1,studentsList);
-             else if(i==2)//if student
+             else if(i==2 && status == 200 && count ==1)//if student
                 studentPage.studentLogedin(stage, scane1,table,table1);
 
         });
