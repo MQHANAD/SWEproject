@@ -16,26 +16,41 @@ public class tournament implements Serializable {
     private String sport;
     private int id;
     private int numOfParticibents;
+    private int numOfteams;
     private teams winner;
     private int totalGoals;
     private List<teams> participant;
+    private int stages;
 
-    public tournament(){
+    public tournament(String name2, String type2, String sport2, int numOfParticibents2, int stages2){
         this.name="";
         this.type="";
         this.sport="";
         this.numOfParticibents=0;
     }
     
-    public tournament(String name, String type, String sport,  int numOfParticibents){
+    public tournament(String name, String type, String sport,  int numOfParticibents,int stages,ArrayList<teams> participant){
         this.name=name;
         this.type=type;
         this.sport=sport;
         this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
-        participant = new ArrayList<>();
+        this.participant = participant;
+        this.stages= stages;
+        numOfteams=participant.size();
     }
-
+    public int getNumOfteams() {
+        return numOfteams;
+    }
+    public void setNumOfteams(int numOfteams) {
+        this.numOfteams = numOfteams;
+    }
+    public int getStages() {
+        return stages;
+    }
+    public void setStages(int stages) {
+        this.stages = stages;
+    }
     public String getName() {
         return name;
     }
@@ -133,4 +148,6 @@ public class tournament implements Serializable {
            
         }
     }
+    
+    
 }

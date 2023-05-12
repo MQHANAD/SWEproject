@@ -210,5 +210,10 @@ public class teams implements Serializable {
            
         }
     }
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return "name: "+name+"    Number OF Players: "+numOfPlayers;
+    }
     
 }

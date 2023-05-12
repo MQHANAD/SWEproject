@@ -34,27 +34,32 @@ public class tournamentMaker extends Application {
         
         // Name column
         TableColumn<tournament,String> nameCoulmn = new TableColumn<>("Name");
-        nameCoulmn.setMinWidth(200);
+        nameCoulmn.setMinWidth(150);
         nameCoulmn.setCellValueFactory(new PropertyValueFactory("name"));
 
         // Type column
         TableColumn<tournament,String> typeCoulmn = new TableColumn<>("Type");
-        typeCoulmn.setMinWidth(200);
+        typeCoulmn.setMinWidth(150);
         typeCoulmn.setCellValueFactory(new PropertyValueFactory("type"));
 
         // Sport column
         TableColumn<tournament,String> sportCoulmn = new TableColumn<>("Sport");
-        sportCoulmn.setMinWidth(200);
+        sportCoulmn.setMinWidth(150);
         sportCoulmn.setCellValueFactory(new PropertyValueFactory("sport"));
 
         // NumOfParticibents column get
-        TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("Number Of Particibents");
-        numOfParticibentsCoulmn.setMinWidth(200);
+        TableColumn<tournament,Integer> numOfParticibentsCoulmn = new TableColumn<>("Requierd Number of Players In a Team");
+        numOfParticibentsCoulmn.setMinWidth(300);
         numOfParticibentsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
+
+        // NumOfteams column get
+        TableColumn<tournament,Integer> numOfteamsCoulmn = new TableColumn<>("Number Of Teams");
+        numOfteamsCoulmn.setMinWidth(200);
+        numOfteamsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfteams"));
 
         table=new TableView<>();
         table.setItems(tournaments);
-        table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn);
+        table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn,numOfteamsCoulmn);
         
         //teams table
         // Name column

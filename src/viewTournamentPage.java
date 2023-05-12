@@ -13,7 +13,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class viewTournamentPage {
-    public static void viewtournamentPageCalled(Stage stage,Scene scane1,TableView <tournament> table){
+    public static void viewtournamentPageCalled(Stage stage,Scene scane1,TableView <tournament> table,ObservableList<tournament> tournaments){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
 
@@ -63,15 +63,14 @@ public class viewTournamentPage {
         });
 
         
-        editTournament.setOnAction(e->{
-            //call the method to edit the details
-        });
+        
         deleteTournament.setOnAction(e->{
             //call the method to delete the tournament
             ObservableList<tournament> tournamentSelected, allTournaments;
             allTournaments=table.getItems();
             tournamentSelected=table.getSelectionModel().getSelectedItems();
             tournamentSelected.forEach(allTournaments::remove);
+            tournament.saveTournaments(tournaments);
         });
 
 
@@ -101,6 +100,9 @@ public class viewTournamentPage {
         root.requestFocus();
         viewTournamentDetails.setOnAction(e->{
             tournamentDetails.viewDetailsPageCalled(stage, scene);
+        });
+        editTournament.setOnAction(e->{
+            editTournamentPage.editTournamentPageCalled(stage, scene, table, tournaments);;
         });
     }
     public static void viewTRstudentPageCalled(Stage stage,Scene scane1,TableView <tournament> table){

@@ -67,8 +67,8 @@ public class Admin implements Serializable {
         this.password=password;
     }
 
-    public void createTournament(String name, String type,String sport, int id, int numOfParticibents){
-        tournament tournament=new tournament(name, type, sport, numOfParticibents);
+    public void createTournament(String name, String type,String sport, int id, int numOfParticibents,int stages){
+        tournament tournament=new tournament(name, type, sport, numOfParticibents,stages);
         tournaments.add(tournament);
  
     }

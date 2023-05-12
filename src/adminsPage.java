@@ -97,7 +97,7 @@ public class adminsPage {
             // here where the admin can add students/teams to tournaments
             // remove students/teams from the tournaments
             // view mathes 
-            viewTournamentPage.viewtournamentPageCalled(stage, scene,table);
+            viewTournamentPage.viewtournamentPageCalled(stage, scene,table,tournaments);
         });
         creatTournament.setOnAction(e->{
             createTournamentPage.tournamentPageCalled(stage, scene,tournaments);

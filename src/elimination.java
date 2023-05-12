@@ -1,7 +1,9 @@
+import java.util.ArrayList;
+
 public class elimination extends tournament {
 
-    public elimination(String name, String type, String sport, int numOfParticibents) {
-        super(name, type, sport, numOfParticibents);
+    public elimination(String name, String type, String sport, int numOfParticibents,int stages,ArrayList<teams> par) {
+        super(name, type, sport, numOfParticibents,stages,par);
         
     
     }
