@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Httprequist",
+            "request": "launch",
+            "mainClass": "Httprequist",
+            "projectName": "SWEproject_c8269e7e"
+        },
+        {
+            "type": "java",
             "name": "test2",
             "request": "launch",
             "mainClass": "test2",

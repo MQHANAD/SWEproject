@@ -1,10 +1,12 @@
 import java.util.ArrayList;
 
 import javafx.collections.ObservableList;
+import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
 import javafx.scene.control.TextField;
@@ -12,11 +14,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class creatTeamPage {
-    //static ArrayList<student>  chosenStudents = new ArrayList<>();
-    public static void creatTeamPageCalled(Stage stage,Scene scane1, ObservableList<teams> teamList, ArrayList<student> studentsList){
+    static ArrayList<student>  chosenStudents = new ArrayList<>();
+    public static void creatTeamPageCalled(Stage stage,Scene scane1, ObservableList<teams> teamList){
+        ArrayList<student>  chosenStudents = new ArrayList<>();
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -91,14 +95,12 @@ public class creatTeamPage {
             
         });
         selectTeamMembers.setOnAction(e->{
-            selectMembersClicked(stage,scene,studentsList);
-
+            selectMembersClicked(stage,scene);
         });
 
         createButton.setOnAction(e->{
             System.out.println(name.getText());
-            
-            teamList.add(new teams(name.getText()));
+            teamList.add(new teams(name.getText(),chosenStudents));
             teams.saveTeams(teamList);
             
             //get the student selcted and add them to the team
@@ -110,13 +112,16 @@ public class creatTeamPage {
         });
            
     }
-    public static  void selectMembersClicked(Stage stage,Scene scane1,ArrayList studentsList ){
+    public static  void selectMembersClicked(Stage stage,Scene scane1 ){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
-        
+        ArrayList<student> studentsList = student.loadStudents();
+        Label ctrl = new Label("Hold CTRL When Selecting Multiple Members!!");
+        ctrl.setId("bold");
+        ctrl.setFont(new Font(20));
         ListView<student> studentListView = new ListView<>();
         studentListView.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
         for (int i =0; i<studentsList.size() ;i++ ){
@@ -163,7 +168,8 @@ public class creatTeamPage {
         butttonsBox.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(10,studentListView,butttonsBox);
+        VBox box = new VBox(10,studentListView,butttonsBox,ctrl);
+        box.setPadding(new Insets(0, 55, 0, 40));
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -177,7 +183,7 @@ public class creatTeamPage {
 
         selectTeamMembers.setOnAction(e->{
             
-            //chosenStudents = (ArrayList<student>) studentListView.getSelectionModel().getSelectedItems();
+            chosenStudents = (ArrayList<student>) studentListView.getSelectionModel().getSelectedItems();
             
         });
         backButton.setOnAction(e->{
@@ -187,7 +193,7 @@ public class creatTeamPage {
             stage.setHeight(heigt);
             stage.setWidth(width);
         });
-        //return chosenStudents;
+        
         
     }   
     

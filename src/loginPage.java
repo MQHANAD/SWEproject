@@ -6,7 +6,6 @@ import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
 import java.util.ArrayList;
-
 import javafx.collections.ObservableList;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -22,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1, ArrayList<student> studentsList){
+    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -153,9 +152,17 @@ public class loginPage {
 
             }
             if (i == 1 && status == 200 && count == 0)//if admin
-                 adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1,studentsList);
-             else if(i==2 && status == 200 && count ==1)//if student
+                 adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1);
+            else if(i==2 && status == 200 && count ==1)//if student
                 studentPage.studentLogedin(stage, scane1,table,table1);
+            else if(status==400){
+                // show error message Missing parameters
+            }
+            else if (status == 403){
+                //show error message Username or Password is wrong
+
+            }
+
 
         });
         backButton.setOnAction(e->{
@@ -166,8 +173,8 @@ public class loginPage {
             stage.setWidth(width);
 
         });
-        register.setOnAction(e->{
-            registrationPage.registraionButtonClicked(i, stage ,scene,studentsList);
-        });
+        // register.setOnAction(e->{
+        //     registrationPage.registraionButtonClicked(i, stage ,scene,studentsList);
+        // });
     }
 }
