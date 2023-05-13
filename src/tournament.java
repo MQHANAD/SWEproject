@@ -26,6 +26,7 @@ public class tournament implements Serializable {
     private int totalGoals;
     private List<teams> participantTr;
     private List<student> participantST;
+    private List <Match> matchs;
     private int stages;
     private Date startDate;
     private Date endDate;

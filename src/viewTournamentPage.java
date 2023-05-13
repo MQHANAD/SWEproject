@@ -99,7 +99,7 @@ public class viewTournamentPage {
         stage.setScene(scene); 
         root.requestFocus();
         viewTournamentDetails.setOnAction(e->{
-            tournamentDetails.viewDetailsPageCalled(stage, scene);
+            tournamentDetails.viewDetailsPageCalled(stage, scene,table.getSelectionModel().getSelectedItem());
         });
         editTournament.setOnAction(e->{
             editTournamentPage.editTournamentPageCalled(stage, scene, table, tournaments);;
