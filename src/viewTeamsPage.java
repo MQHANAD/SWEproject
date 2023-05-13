@@ -1,4 +1,9 @@
+import java.util.ArrayList;
+
+import javax.security.auth.kerberos.KerberosKey;
+
 import javafx.collections.ObservableList;
+import javafx.css.Size;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -13,9 +18,10 @@ import javafx.scene.layout.VBox;
 
 public class viewTeamsPage {
     public static void viewTeamsPageCalled(Stage stage,Scene scane1,TableView <teams> table,student st){
+        ObservableList<teams> teamss=teams.loadTeams();
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
-
+        ArrayList <student> studentsList = student.loadStudents();
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
         Button backButton = new Button("Back");
@@ -54,16 +60,41 @@ public class viewTeamsPage {
         });
         register.setOnAction(e->{
             teams selcted =table.getSelectionModel().getSelectedItem();
+            Boolean conflict = false;
             
-            st.registerForTeam(selcted);
-            selcted.addPlayer(st);
-            table.refresh();
-            double width =stage.getWidth();
-            Double heigt = stage.getHeight();
-            stage.setScene(scane1);
-            stage.setHeight(heigt);
-            stage.setWidth(width);
-            confirmationMessage.display("You have been registered to "+selcted.getName()+" Successfuly");
+
+            
+            for (int i=0; i<selcted.getStudents().size();i++){//to check if the user in the same team
+                if(st.getUserName().equals(selcted.getStudents().get(i).getUserName())){
+                    conflict=true;
+                    break;
+                }
+            }
+            ArrayList<teams> tr = st.getTeam();
+            for (int j=0 ;j<selcted.getRegisterdTournament().size();j++){//this loop doesn't work selcted.getRegisterdTournament().size() is always zero
+                System.out.println("hh");                                // if it works it would check conflict with other teams 
+                for(int k =0 ;k<tr.size();k++){
+                    for (int q =0 ; q<tr.get(k).getRegisterdTournament().size();q++){
+                        if(tr.get(k).getRegisterdTournament().get(q).getId()==selcted.getRegisterdTournament().get(j).getId()){
+                            conflict=true;
+                        }
+                    }
+                }
+            }
+            if (!conflict){
+                st.registerForTeam(selcted,studentsList);
+                selcted.addPlayer(st,teamss);
+                table.refresh();
+                double width =stage.getWidth();
+                Double heigt = stage.getHeight();
+                stage.setScene(scane1);
+                stage.setHeight(heigt);
+                stage.setWidth(width);
+                confirmationMessage.display("You have been registered\nto "+selcted.getName()+" Successfuly");
+            }
+            else {
+                confirmationMessage.display("This Team Plays in a Tournament You are\nPlaying in, or You are already in this team");
+            }
 
         });
 

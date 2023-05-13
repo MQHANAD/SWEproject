@@ -87,12 +87,7 @@ public class student implements Serializable {
         this.team = team;
     }
 
-    public void registerForTournament(){
-
-    }
-    public void registerForTeam() {
-        
-    }
+    
     public void viewTournament(){
 
     }
@@ -171,8 +166,9 @@ public class student implements Serializable {
     public void registerForTournament(tournament selected) {
         tournaments.add(selected);
     }
-    public void registerForTeam(teams team1) {
+    public void registerForTeam(teams team1,ArrayList<student>studentsList) {
         this.team.add(team1);
+        saveStudents(studentsList);
     }
     @Override
     public String toString() {

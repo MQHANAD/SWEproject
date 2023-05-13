@@ -22,7 +22,7 @@ public class pickTeamspage {
         // autosizing the image with the stage
         imageView.fitHeightProperty().bind(stage.heightProperty());
         imageView.fitWidthProperty().bind(stage.widthProperty());
-        ObservableList <teams> teamList =  teams.loadTeams();
+        ObservableList<teams> teamList =  teams.loadTeams();
         Label ctrl = new Label("Hold CTRL When Selecting Multiple Teams!!");
         ctrl.setId("bold");
         ctrl.setFont(new Font(20));
@@ -99,14 +99,34 @@ public class pickTeamspage {
         selectTeamMembers.setOnAction(e->{
             if(type.equals("Elimination")){
                 // create elimination tournament
-                tournaments.add(new elimination(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
+                
+                ArrayList<teams> arselcted = new ArrayList<>(teamsListView.getSelectionModel().getSelectedItems());
+                elimination tour = new elimination(name,type,sport,numOfPar,numOfdayBetStages,arselcted);
+                
                 tournament.saveTournaments(tournaments);
+                for (int i =0 ; i<arselcted.size();i++){
+                    arselcted.get(i).RegisterTournament(tour,teamList);
+                }
+                tournaments.add(tour);
+                tournament.saveTournaments(tournaments);
+                
                 
             }
             else if(type.equals("Round Robin")){
                 //create Round Robin tournament
-                tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
+                
+
+                ArrayList<teams> arselcted = new ArrayList<>(teamsListView.getSelectionModel().getSelectedItems());
+                
+                tournament tour = new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,arselcted);
+                
+                for (int i =0 ; i<arselcted.size();i++){
+                    arselcted.get(i).RegisterTournament(tour,teamList);
+                }
+                tournaments.add(tour);
                 tournament.saveTournaments(tournaments);
+                
+                
             }
             double width =stage.getWidth();
             Double heigt = stage.getHeight();

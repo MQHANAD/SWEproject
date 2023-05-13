@@ -169,7 +169,13 @@ public class creatTeamPage {
         root.requestFocus();
 
         selectTeamMembers.setOnAction(e->{
-            teamList.add(new teams(name,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems())));
+            ArrayList<student> st = new ArrayList<>(studentListView.getSelectionModel().getSelectedItems());
+            teams team=new teams(name,st);
+            
+            for (int i =0; i<st.size();i++){
+                st.get(i).registerForTeam(team, studentsList);
+            }
+            teamList.add(team);
             teams.saveTeams(teamList);
             confirmationMessage.display("Team Created!");
             double width =stage.getWidth();

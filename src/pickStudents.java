@@ -88,14 +88,27 @@ public class pickStudents {
         selectTeamMembers.setOnAction(e->{
             if(type.equals("Elimination")){
                 // create elimination tournament
-                tournaments.add(new elimination(name,type,numOfPar,sport,numOfdayBetStages,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems())));
+                ObservableList<student> selcted=  (studentListView.getSelectionModel().getSelectedItems());
+                ArrayList<student> arselcted = new ArrayList<>(selcted);
+                elimination tour = new elimination(name,type,numOfPar,sport,numOfdayBetStages,arselcted);
+                for (int i =0 ; i<arselcted.size();i++){
+                    arselcted.get(i).registerForTournament(tour);
+                }
+                tournaments.add(tour);
                 tournament.saveTournaments(tournaments);
-                
+                student.saveStudents(studentList);
             }
             else if(type.equals("Round Robin")){
                 //create Round Robin tournament
-                tournaments.add(new roundRobin(name,type,numOfPar,sport,numOfdayBetStages,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems())));
+                ObservableList<student> selcted=  (studentListView.getSelectionModel().getSelectedItems());
+                ArrayList<student> arselcted = new ArrayList<>(selcted);
+                roundRobin tour = new roundRobin(name,type,numOfPar,sport,numOfdayBetStages,arselcted);
+                for (int i =0 ; i<arselcted.size();i++){
+                   arselcted.get(i).registerForTournament(tour);
+                }
+                tournaments.add(tour);
                 tournament.saveTournaments(tournaments);
+                student.saveStudents(studentList);
             }
             double width =stage.getWidth();
             Double heigt = stage.getHeight();

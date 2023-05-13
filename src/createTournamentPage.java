@@ -132,11 +132,11 @@ public class createTournamentPage {
                 confirmationMessage.display("Please Fill the required details");
             }
             else if(numOfPAr.getValue()>1){
-                System.out.println("1");
+                
                 pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
             }
             else if(numOfPAr.getValue()==1){
-                System.out.println("2");
+                
                 pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
             }
             

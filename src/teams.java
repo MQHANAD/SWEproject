@@ -20,7 +20,7 @@ public class teams implements Serializable {
     private int points; //THE FIRST
     private int gamesPlayed; // to show it in the table
     private int goalsDiff; // Goals for - Goals against (Important in league standings "The Third")
-    private List <tournament> registerdTournament;
+    private ArrayList <tournament> registerdTournament;
     private ArrayList <student> students;
     private int numOfPlayers;
     
@@ -34,7 +34,7 @@ public class teams implements Serializable {
         this.points = 0;
         this.gamesPlayed = 0;
         this.goalsDiff = 0;
-        registerdTournament= new ArrayList<>();
+        registerdTournament= new ArrayList<tournament>();
         numOfPlayers=0;
     }
 
@@ -42,6 +42,7 @@ public class teams implements Serializable {
         this.name=text;
         this.students=List;
         this.numOfPlayers=List.size();
+        registerdTournament= new ArrayList<tournament>();
     }
 
     public int getNumOfPlayers() {
@@ -88,13 +89,13 @@ public class teams implements Serializable {
     public List<student> getStudents(){
         return students;
     }
-    public List<tournament> getRegisterdTournament() {
+    public ArrayList<tournament> getRegisterdTournament() {
         return registerdTournament;
     }
 
-    public void RegisterTournament( tournament t) {
+    public void RegisterTournament( tournament t,ObservableList<teams> team) {
         registerdTournament.add(t); 
-        t.addParticipant(this);
+        teams.saveTeams(team);
     }
     public void removeTournament( tournament t) {
         registerdTournament.remove(t);
@@ -210,8 +211,10 @@ public class teams implements Serializable {
            
         }
     }
-    public void addPlayer(student st) {
+    public void addPlayer(student st,ObservableList<teams> teamss) {
         students.add(st);
+        numOfPlayers=students.size();
+        saveTeams(teamss);
     }
     @Override
     public String toString() {

@@ -99,16 +99,7 @@ public class Admin implements Serializable {
 
     }
     
-    public void addStudentToTeam(teams team, student st){
-        if (team != null && st.getTeam() == null){
-            team.getStudents().add(st);   
-            st.registerForTeam(team);
-            System.out.println(st.getName() + " has been added to " + team.getName());
-        
-        }
-        
-        else{System.out.println("Unable to add player to team");}
-    }
+    
     
      public void removeStudentFromTeam(student st,teams tm){
         if (st.getTeam() != null){
