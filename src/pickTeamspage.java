@@ -102,13 +102,13 @@ public class pickTeamspage {
         selectTeamMembers.setOnAction(e->{
             if(type.equals("Elimination")){
                 // create elimination tournament
-                tournaments.add(new elimination(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
+                tournaments.add(new elimination(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems()),date));
                 tournament.saveTournaments(tournaments);
                 
             }
             else if(type.equals("Round Robin")){
                 //create Round Robin tournament
-                tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
+                tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems()),date));
                 tournament.saveTournaments(tournaments);
             }
             double width =stage.getWidth();
