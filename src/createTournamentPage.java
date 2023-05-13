@@ -22,7 +22,7 @@ import java.time.ZoneId;
 import java.util.*;
 
 public class createTournamentPage {
-    public static void tournamentPageCalled(Stage stage,Scene scane1,ObservableList<tournament> tournaments){
+    public static void tournamentPageCalled(Stage stage,Scene scane1,ObservableList<tournament> tournaments, String x){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -48,7 +48,7 @@ public class createTournamentPage {
         Label dateLabel=new Label("Choose the start date");
         dateLabel.setId("bold");
         ChoiceBox <String> types = new ChoiceBox<>();
-        ChoiceBox <String> sports = new ChoiceBox<>();
+        ChoiceBox <String>  sports = new ChoiceBox<>();
         ChoiceBox <Integer> numOfPAr = new ChoiceBox<>();
         ChoiceBox <Integer> numOfStage = new ChoiceBox<>();
         DatePicker date=new DatePicker();
@@ -58,6 +58,9 @@ public class createTournamentPage {
         numOfStage.getStyleClass().add("normal-color");
         types.getItems().addAll("Elimination","Round Robin");
         sports.getItems().addAll("Football","Basketball","Tennis","Volleyball");
+        if(!x.isEmpty()){
+            sports.getItems().add(x);
+        }
         numOfPAr.getItems().addAll(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20);
         numOfStage.getItems().addAll(1,2,3,4,5,6,7,8,9,10);
         type.setFont(new Font(20));
@@ -165,5 +168,6 @@ public class createTournamentPage {
         });
            
     }    
+    
     
 }
