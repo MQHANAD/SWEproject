@@ -6,6 +6,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -14,6 +15,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import java.util.*;
 
 public class createTournamentPage {
     public static void tournamentPageCalled(Stage stage,Scene scane1,ObservableList<tournament> tournaments){
@@ -39,11 +41,14 @@ public class createTournamentPage {
         nameLabel.setId("bold");
         Label numberOfDays = new Label("Number Of Days \n Between Stages");
         numberOfDays.setId("bold");
+        Label dateLabel=new Label("Choose the start date");
+        dateLabel.setId("bold");
         ChoiceBox <String> types = new ChoiceBox<>();
         ChoiceBox <String> sports = new ChoiceBox<>();
         ChoiceBox <Integer> numOfPAr = new ChoiceBox<>();
         ChoiceBox <Integer> numOfStage = new ChoiceBox<>();
-        types.getStyleClass().add("normal-color");
+        DatePicker date=new DatePicker();
+        types.getStyleClass().add("normal-color");        
         sports.getStyleClass().add("normal-color");
         numOfPAr.getStyleClass().add("normal-color");
         numOfStage.getStyleClass().add("normal-color");
@@ -77,11 +82,13 @@ public class createTournamentPage {
 
     
         name.setPromptText("Tournament's Name");
+        date.setPromptText("Pick the start date");
         name.setMinWidth(300);
         types.setMinWidth(300);
         sports.setMinWidth(300);
         numOfPAr.setMinWidth(300);
         numOfStage.setMinWidth(300);
+        date.setMinWidth(300);
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
         createButton.setMaxSize(150 ,30);
@@ -93,6 +100,7 @@ public class createTournamentPage {
         HBox nameBox = new HBox(71,nameLabel,name );
         HBox numOfDays = new HBox(0,numberOfDays,numOfStage);
         HBox numOfplayersBox = new HBox(50,numOfParLabel,numOfPAr );
+        HBox dateBox= new HBox(50,dateLabel, date);
         HBox butttonsBox = new HBox(20,backButton,createButton);
         
         sportBox.setAlignment(Pos.CENTER);
@@ -101,9 +109,10 @@ public class createTournamentPage {
         nameBox.setAlignment(Pos.CENTER);
         butttonsBox.setAlignment(Pos.CENTER);
         numOfDays.setAlignment(Pos.CENTER);
+        dateBox.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(10,nameBox,sportBox,numOfplayersBox,typeBox, numOfDays ,butttonsBox);
+        VBox box = new VBox(10,nameBox,sportBox,numOfplayersBox,typeBox, numOfDays,dateBox ,butttonsBox);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
