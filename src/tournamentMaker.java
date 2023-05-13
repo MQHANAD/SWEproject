@@ -19,6 +19,7 @@ public class tournamentMaker extends Application {
     private TableView<teams>  table1 = new TableView<>();
     ObservableList<tournament> tournaments=tournament.loadTournaments();
     ObservableList<teams> teamList = teams.loadTeams();
+    
     @Override
     public void start(Stage stage) {       
         // background image
@@ -53,7 +54,7 @@ public class tournamentMaker extends Application {
         numOfParticibentsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfParticibents"));
 
         // NumOfteams column get
-        TableColumn<tournament,Integer> numOfteamsCoulmn = new TableColumn<>("Number Of Teams");
+        TableColumn<tournament,Integer> numOfteamsCoulmn = new TableColumn<>("Number Of participants");
         numOfteamsCoulmn.setMinWidth(200);
         numOfteamsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfteams"));
 
@@ -140,10 +141,10 @@ public class tournamentMaker extends Application {
 
         // loging in scene
         admin.setOnAction(e->{
-            loginPage.login(stage,scene,1,menu,tournaments,table,teamList,table1);
+            loginPage.login(stage,scene,menu,tournaments,table,teamList,table1);
         });
         student.setOnAction(e->{
-            loginPage.login(stage,scene,2,menu,tournaments,table,teamList,table1);
+            loginPage.login(stage,scene,menu,tournaments,table,teamList,table1);
         });
         guest.setOnAction(e->{
             guestPage.guestLogedin(stage, scene,table);

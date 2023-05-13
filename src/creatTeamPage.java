@@ -89,7 +89,11 @@ public class creatTeamPage {
         
 
         createButton.setOnAction(e->{
-            selectMembersClicked(stage,scene,scane1,teamList,name.getText());
+            if (name.getText().isEmpty()){
+                confirmationMessage.display("Please Fill the required details");
+            }
+            else
+                selectMembersClicked(stage,scene,scane1,teamList,name.getText());
             
 
         });

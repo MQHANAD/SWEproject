@@ -101,8 +101,8 @@ public class Admin implements Serializable {
     
     public void addStudentToTeam(teams team, student st){
         if (team != null && st.getTeam() == null){
-            team.getStudents().add(st);
-            st.setTeam(team);
+            team.getStudents().add(st);   
+            st.registerForTeam(team);
             System.out.println(st.getName() + " has been added to " + team.getName());
         
         }
@@ -110,12 +110,11 @@ public class Admin implements Serializable {
         else{System.out.println("Unable to add player to team");}
     }
     
-     public void removeStudentFromTeam(student st){
+     public void removeStudentFromTeam(student st,teams tm){
         if (st.getTeam() != null){
-            teams team= st.getTeam();
-            team.getStudents().remove(st);
+            tm.getStudents().remove(st);
             st.setTeam(null);
-            System.out.println(st.getName() + " has been removed from " + team.getName()); 
+            System.out.println(st.getName() + " has been removed from " + tm.getName()); 
            
         }
 
@@ -149,7 +148,7 @@ public class Admin implements Serializable {
                 System.out.println("Tournament Type: " + tournament.getType());
 
                 System.out.println("Teams/Players:");
-                for (teams team : tournament.getParticipant()){
+                for (teams team : tournament.getParticipantTr()){
 
                     System.out.println("  - " + team.getName());
 

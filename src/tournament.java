@@ -19,7 +19,8 @@ public class tournament implements Serializable {
     private int numOfteams;
     private teams winner;
     private int totalGoals;
-    private List<teams> participant;
+    private List<teams> participantTr;
+    private List<student> participantST;
     private int stages;
 
     public tournament(String name2, String type2, String sport2, int numOfParticibents2, int stages2){
@@ -35,7 +36,17 @@ public class tournament implements Serializable {
         this.sport=sport;
         this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
-        this.participant = participant;
+        this.participantTr = participant;
+        this.stages= stages;
+        numOfteams=participant.size();
+    }
+    public tournament(String name, String type, int numOfParticibents, String sport,int stages,ArrayList<student> participant){
+        this.name=name;
+        this.type=type;
+        this.sport=sport;
+        this.id = UUID.randomUUID().hashCode();
+        this.numOfParticibents=numOfParticibents;
+        this.participantST = participant;
         this.stages= stages;
         numOfteams=participant.size();
     }
@@ -63,11 +74,14 @@ public class tournament implements Serializable {
     public int getNumOfParticibents() {
         return numOfParticibents;
     }
-    public List<teams> getParticipant() {
-        return participant;
+    public List<teams> getParticipantTr() {
+        return participantTr;
     }
     public int getId() {
         return id;
+    }
+    public List<student> getParticipantST() {
+        return participantST;
     }
     
     
@@ -78,9 +92,12 @@ public class tournament implements Serializable {
     public int getTotalGoals() {
         return totalGoals;
     }
+    public void setParticipantST(List<student> participantST) {
+        this.participantST = participantST;
+    }
 
-    public void setParticipant(List<teams> participant) {
-        this.participant = participant;
+    public void setParticipantTr(List<teams> participant) {
+        this.participantTr = participant;
     }
     public void setName(String name) {
         this.name = name;
@@ -104,10 +121,10 @@ public class tournament implements Serializable {
         this.totalGoals = totalGoals;
     }
     public void addParticipant(teams participant) {
-        this.participant.add(participant);
+        this.participantTr.add(participant);
     }
     public void removeParticipant(teams participant) {
-        this.participant.remove(participant);
+        this.participantTr.remove(participant);
     }    
     public static ObservableList loadTournaments(){
         ObservableList tournaments = FXCollections.observableArrayList();
@@ -147,6 +164,13 @@ public class tournament implements Serializable {
             
            
         }
+    }
+
+    public void addParticipant(student student1) {
+        participantST.add(student1);
+    }
+    public void addParticipantTeam(teams team) {
+        participantTr.add(team);
     }
     
     

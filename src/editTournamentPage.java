@@ -127,7 +127,6 @@ public class editTournamentPage {
 
         VBox box = new VBox(30,nameBox,sportBox,numOfplayersBox,typeBox, numOfDays ,butttonsBox);
         butttonsBox.setAlignment(Pos.CENTER);
-
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
         

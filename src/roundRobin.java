@@ -5,6 +5,9 @@ public class roundRobin extends tournament{
         super(name, type, sport, numOfParticibents,stages,par);
        
     }
+    public roundRobin(String name, String type, int numOfPar, String sport, int numOfdayBetStages,ArrayList<student> par) {
+        super(name, type,numOfPar,sport,numOfdayBetStages,par);
+    }
 
     
 

@@ -21,7 +21,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class loginPage {
-    public static void login(Stage stage,Scene scane1,int i,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
+    public static void login(Stage stage,Scene scane1,VBox box1,ObservableList<tournament> tournaments,TableView <tournament> table, ObservableList<teams> teamList, TableView<teams> table1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -29,8 +29,8 @@ public class loginPage {
         imageView.fitWidthProperty().bind(stage.widthProperty());
 
         Button login = new Button("log in");
-        TextField email = new TextField();
-        email.getStyleClass().add("normal-color");
+        TextField UserName = new TextField();
+        UserName.getStyleClass().add("normal-color");
         PasswordField password = new PasswordField();
         password.getStyleClass().add("normal-color");
         Button backButton = new Button("Back");
@@ -58,12 +58,12 @@ public class loginPage {
         });
 
 
-        email.setPromptText("Username");
+        UserName.setPromptText("Username");
         password.setPromptText("Password");
 
 
-        email.setMaxSize(300 ,60);
-        email.setMinSize(200,25);
+        UserName.setMaxSize(300 ,60);
+        UserName.setMinSize(200,25);
         password.setMaxSize(300 ,60);
         password.setMinSize(200,25);
         login.setMaxSize(150 ,30);
@@ -77,7 +77,7 @@ public class loginPage {
         hBox.setAlignment(Pos.CENTER);
 
 
-        VBox box = new VBox(10,email,password,hBox,register);
+        VBox box = new VBox(10,UserName,password,hBox,register);
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
         box.prefWidthProperty().bind(stage.widthProperty());
@@ -94,7 +94,7 @@ public class loginPage {
             int count = 0;
             // email.getText();
             // password.getText();
-            String inpUsername = email.getText();
+            String inpUsername = UserName.getText();
             String inpPassword = password.getText();
             URL url = null; // i put the password and user name just to test but it need to be removed
             try {
@@ -151,17 +151,31 @@ public class loginPage {
                 }
 
             }
-            if (i == 1 && status == 200 && count == 0)//if admin
+            if ( status == 200 && count == 0)//if admin
                  adminsPage.adminLogedin(stage, scane1,tournaments,table,teamList,table1);
-            else if(i==2 && status == 200 && count ==1)//if student
-                studentPage.studentLogedin(stage, scane1,table,table1);
+            else if(status == 200 && count ==1){//if student
+                ArrayList<student> studentList =student.loadStudents();
+                student student1=new student();
+                for (int j =0 ; j<studentList.size();j++){
+                    if (studentList.get(j).getUserName().equals(inpUsername)){
+                        student1 =studentList.get(j);
+                        break;
+                    }
+                }
+                studentPage.studentLogedin(stage, scane1,table,table1,student1);
+            }
+
+                
             else if(status==400){
                 // show error message Missing parameters
+                confirmationMessage.display("Missing Parameters!");
             }
             else if (status == 403){
                 //show error message Username or Password is wrong
+                confirmationMessage.display("Username or Password is Wrong!");
 
             }
+            
 
 
         });

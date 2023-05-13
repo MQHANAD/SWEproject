@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
 public class viewTeamsPage {
-    public static void viewTeamsPageCalled(Stage stage,Scene scane1,TableView <teams> table){
+    public static void viewTeamsPageCalled(Stage stage,Scene scane1,TableView <teams> table,student st){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
 
@@ -19,6 +19,7 @@ public class viewTeamsPage {
         imageView.fitWidthProperty().bind(stage.widthProperty());
         Button backButton = new Button("Back");
         Button viewTeamsDetails = new Button("View Details");
+        Button register = new Button("Register");
 
         backButton.setOnMouseEntered(e ->{
             backButton.setId("buttonOnTouch");    
@@ -33,6 +34,12 @@ public class viewTeamsPage {
         viewTeamsDetails.setOnMouseExited(e->{
             viewTeamsDetails.setId("buttonOut");
         });
+        register.setOnMouseEntered(e ->{
+            register.setId("buttonOnTouch");    
+        });
+        register.setOnMouseExited(e->{
+            register.setId("buttonOut");    
+        });
         
        
 
@@ -44,14 +51,30 @@ public class viewTeamsPage {
             stage.setWidth(width);
             
         });
+        register.setOnAction(e->{
+            teams selcted =table.getSelectionModel().getSelectedItem();
+            
+            st.registerForTeam(selcted);
+            selcted.addPlayer(st);
+            table.refresh();
+            double width =stage.getWidth();
+            Double heigt = stage.getHeight();
+            stage.setScene(scane1);
+            stage.setHeight(heigt);
+            stage.setWidth(width);
+            confirmationMessage.display("You have been registered to "+selcted.getName()+" Successfuly");
+
+        });
 
         
         
         
 
 
-        HBox butttonsBox = new HBox(20,backButton,viewTeamsDetails);
-        butttonsBox.setAlignment(Pos.CENTER);
+        
+        HBox buttonsBox = new HBox(20, backButton,viewTeamsDetails,register);
+
+        buttonsBox.setAlignment(Pos.CENTER);
 
         backButton.setMaxSize(150 ,30);
         backButton.setMinSize(100,12.5);
@@ -60,7 +83,7 @@ public class viewTeamsPage {
         
         
 
-        VBox box =new VBox(20,table,butttonsBox);
+        VBox box =new VBox(20,table,buttonsBox);
         box.setPadding(new Insets(0, 55, 0, 40));
         box.setAlignment(Pos.CENTER);
         box.prefHeightProperty().bind(stage.heightProperty());
@@ -109,7 +132,7 @@ public class viewTeamsPage {
             stage.setWidth(width);
             
         });
-        
+
         HBox butttonsBox = new HBox(20,backButton,viewTeamsDetails);
         butttonsBox.setAlignment(Pos.CENTER);
 

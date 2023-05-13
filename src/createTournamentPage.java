@@ -33,7 +33,7 @@ public class createTournamentPage {
         type.setId("bold");
         Label sport = new Label("Sport");
         sport.setId("bold");
-        Label numOfParLabel = new Label("Players");
+        Label numOfParLabel = new Label("Players\nin a team");
         numOfParLabel.setId("bold");
         Label nameLabel = new Label("Name");
         nameLabel.setId("bold");
@@ -92,7 +92,7 @@ public class createTournamentPage {
         HBox typeBox = new HBox(83,type,types );
         HBox nameBox = new HBox(71,nameLabel,name );
         HBox numOfDays = new HBox(0,numberOfDays,numOfStage);
-        HBox numOfplayersBox = new HBox(66,numOfParLabel,numOfPAr );
+        HBox numOfplayersBox = new HBox(50,numOfParLabel,numOfPAr );
         HBox butttonsBox = new HBox(20,backButton,createButton);
         
         sportBox.setAlignment(Pos.CENTER);
@@ -126,13 +126,23 @@ public class createTournamentPage {
         });
 
         createButton.setOnAction(e->{
-            
 
             
+            if(numOfPAr.getSelectionModel().isEmpty()||types.getSelectionModel().isEmpty()||sports.getSelectionModel().isEmpty()||numOfPAr.getSelectionModel().isEmpty()||numOfStage.getSelectionModel().isEmpty()||name.getText().isEmpty()){
+                confirmationMessage.display("Please Fill the required details");
+            }
+            else if(numOfPAr.getValue()>1){
+                System.out.println("1");
+                pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
+            }
+            else if(numOfPAr.getValue()==1){
+                System.out.println("2");
+                pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
+            }
             
             
-            pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
             
+               
 
         });
            

@@ -133,7 +133,7 @@
  }
  
  .table-row-cell:selected {
-     -fx-background-color: rgba(55, 64, 75,0.890);
+     -fx-background-color: rgb(138, 138, 138);
      
      
  }

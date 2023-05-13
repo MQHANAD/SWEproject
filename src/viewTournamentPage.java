@@ -105,7 +105,7 @@ public class viewTournamentPage {
             editTournamentPage.editTournamentPageCalled(stage, scene, table, tournaments);;
         });
     }
-    public static void viewTRstudentPageCalled(Stage stage,Scene scane1,TableView <tournament> table){
+    public static void viewTRstudentPageCalled(Stage stage,Scene scane1,TableView <tournament> table,student student1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
 
@@ -151,7 +151,9 @@ public class viewTournamentPage {
 
         
         registerForTournament.setOnAction(e->{
-            //call the method 
+            tournament selected =(tournament)table.getSelectionModel().getSelectedItem();
+             student1.registerForTournament(selected);
+             selected.addParticipant(student1);
         });
         
 

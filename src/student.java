@@ -17,19 +17,25 @@ public class student implements Serializable {
     private String email;
     private int id;
     private String password;
-    private teams team;
+    private ArrayList<teams> team;
+    private ArrayList<tournament> tournaments;
 
 
     public student(String userName,String password, String email,String lastname,String name){
-
         this.name=name;
         this.email=email;
         this.id=UUID.randomUUID().hashCode();
         this.password=password;
         this.lastname=lastname;
         this.userName=userName;
-        this.team = null;
+        this.team = new ArrayList<>();
+        this.tournaments= new ArrayList<>();
         
+    }
+    public student() {
+    }
+    public ArrayList<tournament> getTournaments() {
+        return tournaments;
     }
     public String getLastname() {
         return lastname;
@@ -51,8 +57,11 @@ public class student implements Serializable {
         return name;
     }
     
-    public teams getTeam(){
+    public ArrayList<teams> getTeam(){
         return team;
+    }
+    public void setTournaments(ArrayList<tournament> tournaments) {
+        this.tournaments = tournaments;
     }
     public void setLastname(String lastname) {
         this.lastname = lastname;
@@ -74,7 +83,7 @@ public class student implements Serializable {
         this.password = password;
     }
     
-    public void setTeam(teams team) {
+    public void setTeam(ArrayList<teams> team) {
         this.team = team;
     }
 
@@ -159,10 +168,17 @@ public class student implements Serializable {
            
         }
     }
+    public void registerForTournament(tournament selected) {
+        tournaments.add(selected);
+    }
+    public void registerForTeam(teams team1) {
+        this.team.add(team1);
+    }
     @Override
     public String toString() {
         // TODO Auto-generated method stub
         return "Username:  "+this.getUserName() +  "        email:  " + this.getEmail() + "          name:  " + this.getLastname()+ ", "+this.getName();
     }
+    
 
 }

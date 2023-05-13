@@ -10,7 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class studentPage {
-    public static void studentLogedin(Stage stage,Scene scane1, TableView<tournament> table, TableView<teams> table1){
+    public static void studentLogedin(Stage stage,Scene scane1, TableView<tournament> table, TableView<teams> table1,student student1){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -70,11 +70,11 @@ public class studentPage {
         
         
         viewTournament.setOnAction(e->{
-            viewTournamentPage.viewTRstudentPageCalled(stage, scene, table);
+            viewTournamentPage.viewTRstudentPageCalled(stage, scene, table,student1);
         });
         
         viewTeams.setOnAction(e->{
-            viewTeamsPage.viewTeamsPageCalled(stage, scene, table1);
+            viewTeamsPage.viewTeamsPageCalled(stage, scene, table1,student1);
             // here where the student can register to a team
         });
         

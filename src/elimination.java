@@ -8,6 +8,10 @@ public class elimination extends tournament {
     
     }
 
+    public elimination(String name, String type, int numOfPar, String sport, int numOfdayBetStages,ArrayList<student> par) {
+        super(name, type,numOfPar,sport,numOfdayBetStages,par);
+    }
+
     private teams[] eliminated;
     
     public teams[] getEliminated() {
