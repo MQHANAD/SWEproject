@@ -1,4 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 public class pickTeamspage {
 
-    public static  void viewTeams(Stage stage,Scene scane1,Scene scane12, ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages){
+    public static  void viewTeams(Stage stage,Scene scane1,Scene scane12, ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages, LocalDate date){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage

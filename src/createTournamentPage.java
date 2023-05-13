@@ -142,11 +142,11 @@ public class createTournamentPage {
             }
             else if(numOfPAr.getValue()>1){
                 System.out.println("1");
-                pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
+                pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),date.getValue());
             }
             else if(numOfPAr.getValue()==1){
                 System.out.println("2");
-                pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue());
+                pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),date.getValue());
             }
             
             

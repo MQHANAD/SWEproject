@@ -4,10 +4,14 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -23,7 +27,8 @@ public class tournament implements Serializable {
     private List<teams> participantTr;
     private List<student> participantST;
     private int stages;
-    private Date startDate;
+    private LocalDate startDate;
+    private LocalDate endDate;
 
     public tournament(String name2, String type2, String sport2, int numOfParticibents2, int stages2){
         this.name="";
@@ -53,7 +58,7 @@ public class tournament implements Serializable {
         numOfteams=participant.size();
     }
 
-    public tournament(String name, String type, String sport,  int numOfParticibents,Date startDate,int stages,ArrayList<teams> participant){
+    public tournament(String name, String type, String sport,  int numOfParticibents,LocalDate startDate,int stages,ArrayList<teams> participant){
         this.name=name;
         this.type=type;
         this.sport=sport;
@@ -99,11 +104,11 @@ public class tournament implements Serializable {
         return participantST;
     }
 
-    public Date getDate(){
+    public LocalDate getDate(){
         return startDate;
     }
 
-    public void setDate(Date startDate){
+    public void setDate(LocalDate startDate){
         this.startDate=startDate;
 
     }
