@@ -1,3 +1,4 @@
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
@@ -97,6 +98,10 @@ public class viewTeamsPage {
         root.requestFocus();
         viewTeamsDetails.setOnAction(e->{
             //call the method
+            ObservableList<teams> teamSelected;
+            teamSelected=table.getSelectionModel().getSelectedItems();
+            viewTeamsDetailspage.viewTeamsDetails(stage, scane1, teamSelected);
+            
         });
     }
     public static void viewTeamsPageAdminCalled(Stage stage,Scene scane1,TableView <teams> table){

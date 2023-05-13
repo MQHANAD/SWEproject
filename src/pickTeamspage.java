@@ -35,6 +35,7 @@ public class pickTeamspage {
         
     
         Button backButton = new Button("Back");
+        Button delete= new Button("Delete team");
         
         Button selectTeamMembers = new Button("Create");
 
@@ -43,6 +44,13 @@ public class pickTeamspage {
         });
         backButton.setOnMouseExited(e->{
             backButton.setId("buttonOut");    
+        });
+
+        delete.setOnMouseEntered(e ->{
+            delete.setId("buttonOnTouch");    
+        });
+        delete.setOnMouseExited(e->{
+            delete.setId("buttonOut");    
         });
 
         
@@ -61,11 +69,14 @@ public class pickTeamspage {
         backButton.setMinSize(100,12.5);
         selectTeamMembers.setMaxSize(150 ,30);
         selectTeamMembers.setMinSize(100,12.5);
+        delete.setMaxSize(150 ,30);
+        delete.setMinSize(100,12.5);
+        
         
         
 
         
-        HBox butttonsBox = new HBox(20,backButton,selectTeamMembers);
+        HBox butttonsBox = new HBox(20,backButton,delete,selectTeamMembers);
         
         
         selectTeamMembers.setAlignment(Pos.CENTER);
@@ -114,6 +125,14 @@ public class pickTeamspage {
             stage.setWidth(width);
         });
         
+        delete.setOnAction(e->{
+            //call the method to delete the tournament
+            ObservableList<teams> teamSelected, allTeams;
+            allTeams=teamsListView.getItems();
+            teamSelected=teamsListView.getSelectionModel().getSelectedItems();
+            teamSelected.forEach(allTeams::remove);
+            teams.saveTeams(allTeams);
+        });
         
     } 
 }
