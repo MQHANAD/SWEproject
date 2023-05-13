@@ -5,6 +5,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javafx.collections.FXCollections;
@@ -22,6 +23,7 @@ public class tournament implements Serializable {
     private List<teams> participantTr;
     private List<student> participantST;
     private int stages;
+    private Date startDate;
 
     public tournament(String name2, String type2, String sport2, int numOfParticibents2, int stages2){
         this.name="";
@@ -30,20 +32,22 @@ public class tournament implements Serializable {
         this.numOfParticibents=0;
     }
     
-    public tournament(String name, String type, String sport,  int numOfParticibents,int stages,ArrayList<teams> participant){
+    public tournament(String name, String type, String sport,  int numOfParticibents,Date startDate,int stages,ArrayList<teams> participant){
         this.name=name;
         this.type=type;
         this.sport=sport;
+        this.startDate=startDate;
         this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
         this.participantTr = participant;
         this.stages= stages;
         numOfteams=participant.size();
     }
-    public tournament(String name, String type, int numOfParticibents, String sport,int stages,ArrayList<student> participant){
+    public tournament(String name, String type, int numOfParticibents, String sport,Date startDate,int stages,ArrayList<student> participant){
         this.name=name;
         this.type=type;
         this.sport=sport;
+        this.startDate=startDate;
         this.id = UUID.randomUUID().hashCode();
         this.numOfParticibents=numOfParticibents;
         this.participantST = participant;
