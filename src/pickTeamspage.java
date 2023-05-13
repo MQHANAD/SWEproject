@@ -102,14 +102,10 @@ public class pickTeamspage {
         selectTeamMembers.setOnAction(e->{
             if(type.equals("Elimination")){
                 // create elimination tournament
-<<<<<<< HEAD
                 
                 ArrayList<teams> arselcted = new ArrayList<>(teamsListView.getSelectionModel().getSelectedItems());
                 elimination tour = new elimination(name,type,sport,numOfPar,numOfdayBetStages,arselcted);
                 
-=======
-                tournaments.add(new elimination(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems()),date));
->>>>>>> d5bc47762bf3b2c685b378edb0283ba25399492b
                 tournament.saveTournaments(tournaments);
                 for (int i =0 ; i<arselcted.size();i++){
                     arselcted.get(i).RegisterTournament(tour,teamList);
@@ -121,20 +117,7 @@ public class pickTeamspage {
             }
             else if(type.equals("Round Robin")){
                 //create Round Robin tournament
-<<<<<<< HEAD
-                
-
-                ArrayList<teams> arselcted = new ArrayList<>(teamsListView.getSelectionModel().getSelectedItems());
-                
-                tournament tour = new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,arselcted);
-                
-                for (int i =0 ; i<arselcted.size();i++){
-                    arselcted.get(i).RegisterTournament(tour,teamList);
-                }
-                tournaments.add(tour);
-=======
-                tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems()),date));
->>>>>>> d5bc47762bf3b2c685b378edb0283ba25399492b
+                tournaments.add(new roundRobin(name,type,sport,numOfPar,numOfdayBetStages,new ArrayList<> (teamsListView.getSelectionModel().getSelectedItems())));
                 tournament.saveTournaments(tournaments);
                 
                 

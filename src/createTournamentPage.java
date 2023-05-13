@@ -141,6 +141,7 @@ public class createTournamentPage {
         createButton.setOnAction(e->{
 
                 LocalDate localDate=date.getValue();
+                System.out.println(localDate.toString());
                 Instant in=Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
                 Date d=Date.from(in);
             if(numOfPAr.getSelectionModel().isEmpty()||types.getSelectionModel().isEmpty()||sports.getSelectionModel().isEmpty()||numOfPAr.getSelectionModel().isEmpty()||numOfStage.getSelectionModel().isEmpty()||name.getText().isEmpty()){
