@@ -15,6 +15,10 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.*;
 
 public class createTournamentPage {
@@ -142,11 +146,18 @@ public class createTournamentPage {
             }
             else if(numOfPAr.getValue()>1){
                 System.out.println("1");
-                pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),date.getValue());
+                LocalDate localDate=date.getValue();
+                Instant in=Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+                Date d=Date.from(in);
+                
+                pickTeamspage.viewTeams(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),d);
             }
             else if(numOfPAr.getValue()==1){
                 System.out.println("2");
-                pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),date.getValue());
+                LocalDate localDate=date.getValue();
+                Instant in=Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+                Date d=Date.from(in);
+                pickStudents.viewStudents(stage, scene,scane1, tournaments,name.getText(), types.getValue(), sports.getValue(), numOfPAr.getValue(),numOfStage.getValue(),d);
             }
             
             

@@ -62,7 +62,7 @@ public class tournamentMaker extends Application {
         numOfteamsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfteams"));
 
         // startTime column
-        TableColumn<tournament, LocalDate> startTimeColumn = new TableColumn<>("Start time");
+        TableColumn<tournament, java.util.Date> startTimeColumn = new TableColumn<>("Start time");
         startTimeColumn.setMinWidth(200);
         startTimeColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
 
