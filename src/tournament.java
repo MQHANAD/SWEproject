@@ -70,6 +70,18 @@ public class tournament implements Serializable {
         numOfteams=participant.size();
     }
 
+    public tournament(String name, String type, int numOfParticibents, String sport,int stages,ArrayList<student> participant,Date startDate){
+        this.name=name;
+        this.type=type;
+        this.sport=sport;
+        this.startDate=startDate;
+        this.id = UUID.randomUUID().hashCode();
+        this.numOfParticibents=numOfParticibents;
+        this.participantST = participant;
+        this.stages= stages;
+        numOfteams=participant.size();
+    }
+
     public int getNumOfteams() {
         return numOfteams;
     }

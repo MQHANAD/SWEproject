@@ -15,6 +15,10 @@ public class roundRobin extends tournament{
        
     }
 
+    public roundRobin(String name, String type, int numOfPar, String sport, int numOfdayBetStages,ArrayList<student> par,Date startDate) {
+        super(name, type,numOfPar,sport,numOfdayBetStages,par,startDate);
+    }
+
     
 
     private int points;
