@@ -1,4 +1,7 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
+
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -16,7 +19,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 public class pickStudents {
 
-    public static  void viewStudents(Stage stage,Scene scane1,Scene scane12, ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages){
+    public static  void viewStudents(Stage stage,Scene scane1,Scene scane12, ObservableList<tournament> tournaments ,String name, String type, String sport, Integer numOfPar, Integer numOfdayBetStages,Date date){
         Image image = new Image("file:sports_banners-1200x653.png");
         ImageView imageView = new ImageView(image);
         // autosizing the image with the stage
@@ -88,6 +91,7 @@ public class pickStudents {
         selectTeamMembers.setOnAction(e->{
             if(type.equals("Elimination")){
                 // create elimination tournament
+<<<<<<< HEAD
                 ObservableList<student> selcted=  (studentListView.getSelectionModel().getSelectedItems());
                 ArrayList<student> arselcted = new ArrayList<>(selcted);
                 elimination tour = new elimination(name,type,numOfPar,sport,numOfdayBetStages,arselcted);
@@ -95,11 +99,15 @@ public class pickStudents {
                     arselcted.get(i).registerForTournament(tour);
                 }
                 tournaments.add(tour);
+=======
+                tournaments.add(new elimination(name,type,numOfPar,sport,numOfdayBetStages,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems()),date));
+>>>>>>> d5bc47762bf3b2c685b378edb0283ba25399492b
                 tournament.saveTournaments(tournaments);
                 student.saveStudents(studentList);
             }
             else if(type.equals("Round Robin")){
                 //create Round Robin tournament
+<<<<<<< HEAD
                 ObservableList<student> selcted=  (studentListView.getSelectionModel().getSelectedItems());
                 ArrayList<student> arselcted = new ArrayList<>(selcted);
                 roundRobin tour = new roundRobin(name,type,numOfPar,sport,numOfdayBetStages,arselcted);
@@ -107,6 +115,9 @@ public class pickStudents {
                    arselcted.get(i).registerForTournament(tour);
                 }
                 tournaments.add(tour);
+=======
+                tournaments.add(new roundRobin(name,type,numOfPar,sport,numOfdayBetStages,new ArrayList<> (studentListView.getSelectionModel().getSelectedItems()),date));
+>>>>>>> d5bc47762bf3b2c685b378edb0283ba25399492b
                 tournament.saveTournaments(tournaments);
                 student.saveStudents(studentList);
             }

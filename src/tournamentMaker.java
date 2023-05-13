@@ -1,4 +1,7 @@
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.*;
 
 import javafx.application.Application;
 import javafx.collections.ObservableList;
@@ -58,9 +61,14 @@ public class tournamentMaker extends Application {
         numOfteamsCoulmn.setMinWidth(200);
         numOfteamsCoulmn.setCellValueFactory(new PropertyValueFactory("numOfteams"));
 
+        // startTime column
+        TableColumn<tournament, java.util.Date> startTimeColumn = new TableColumn<>("Start time");
+        startTimeColumn.setMinWidth(200);
+        startTimeColumn.setCellValueFactory(new PropertyValueFactory<>("startDate"));
+
         table=new TableView<>();
         table.setItems(tournaments);
-        table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn,numOfteamsCoulmn);
+        table.getColumns().addAll(nameCoulmn, typeCoulmn, sportCoulmn, numOfParticibentsCoulmn,numOfteamsCoulmn,startTimeColumn);
         
         //teams table
         // Name column

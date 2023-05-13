@@ -4,9 +4,14 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+
+import javax.print.attribute.standard.DateTimeAtCompleted;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,6 +27,8 @@ public class tournament implements Serializable {
     private List<teams> participantTr;
     private List<student> participantST;
     private int stages;
+    private Date startDate;
+    private Date endDate;
 
     public tournament(String name2, String type2, String sport2, int numOfParticibents2, int stages2){
         this.name="";
@@ -50,6 +57,31 @@ public class tournament implements Serializable {
         this.stages= stages;
         numOfteams=participant.size();
     }
+
+    public tournament(String name, String type, String sport,  int numOfParticibents,int stages,ArrayList<teams> participant,Date startDate){
+        this.name=name;
+        this.type=type;
+        this.sport=sport;
+        this.startDate=startDate;
+        this.id = UUID.randomUUID().hashCode();
+        this.numOfParticibents=numOfParticibents;
+        this.participantTr = participant;
+        this.stages= stages;
+        numOfteams=participant.size();
+    }
+
+    public tournament(String name, String type, int numOfParticibents, String sport,int stages,ArrayList<student> participant,Date startDate){
+        this.name=name;
+        this.type=type;
+        this.sport=sport;
+        this.startDate=startDate;
+        this.id = UUID.randomUUID().hashCode();
+        this.numOfParticibents=numOfParticibents;
+        this.participantST = participant;
+        this.stages= stages;
+        numOfteams=participant.size();
+    }
+
     public int getNumOfteams() {
         return numOfteams;
     }
@@ -82,6 +114,15 @@ public class tournament implements Serializable {
     }
     public List<student> getParticipantST() {
         return participantST;
+    }
+
+    public Date getDate(){
+        return startDate;
+    }
+
+    public void setDate(Date startDate){
+        this.startDate=startDate;
+
     }
     
     
