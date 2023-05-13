@@ -52,7 +52,7 @@ public class tournament implements Serializable {
         this.stages= stages;
         numOfteams=participant.size();
     }
-    
+
     public tournament(String name, String type, String sport,  int numOfParticibents,Date startDate,int stages,ArrayList<teams> participant){
         this.name=name;
         this.type=type;
@@ -97,6 +97,15 @@ public class tournament implements Serializable {
     }
     public List<student> getParticipantST() {
         return participantST;
+    }
+
+    public Date getDate(){
+        return startDate;
+    }
+
+    public void setDate(Date startDate){
+        this.startDate=startDate;
+
     }
     
     
